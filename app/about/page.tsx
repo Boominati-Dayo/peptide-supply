@@ -38,9 +38,9 @@ export default function AboutPage() {
                             Our Mission
                         </h2>
                         <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                            At PeptideLab, we believe that achieving your best self starts with science you can trust.
-                            Our mission is to deliver premium-grade peptide formulations
-                            that help you unlock your body's full potential from performance and recovery to weight management and anti-aging.
+                            At PeptideLab, we are committed to providing the scientific community with the highest-quality research peptides for cutting-edge biomedical studies. 
+                            As a leading peptide manufacturing company, we specialize in producing a wide range of synthetic peptides, including biologically active peptides, 
+                            peptide hormones, and custom peptide synthesis solutions. Our dedication to quality, purity, and innovation has made us the best peptide company for researchers worldwide.
                         </p>
                     </div>
                 </div>
@@ -89,6 +89,91 @@ export default function AboutPage() {
                 </div>
             </section>
 
+            {/* Why Peptides Matter Section */}
+            <section className="py-16 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="text-center mb-12">
+                            <h2 className="text-3xl font-heading font-bold text-dark mb-4">Why Peptides?</h2>
+                            <p className="text-gray-600">
+                                Peptides play a critical role in biomedical and life sciences research, contributing to advancements in metabolism, 
+                                cellular repair, immune function, and molecular signaling.
+                            </p>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div className="text-center p-6">
+                                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                    </svg>
+                                </div>
+                                <h3 className="font-bold text-dark mb-2">Metabolism</h3>
+                                <p className="text-gray-600 text-sm">Essential for studying metabolic processes and hormonal regulation</p>
+                            </div>
+                            
+                            <div className="text-center p-6">
+                                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                    </svg>
+                                </div>
+                                <h3 className="font-bold text-dark mb-2">Cellular Repair</h3>
+                                <p className="text-gray-600 text-sm">Key players in tissue repair and wound healing research</p>
+                            </div>
+                            
+                            <div className="text-center p-6">
+                                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                    </svg>
+                                </div>
+                                <h3 className="font-bold text-dark mb-2">Immune Function</h3>
+                                <p className="text-gray-600 text-sm">Critical for understanding immune response mechanisms</p>
+                            </div>
+                            
+                            <div className="text-center p-6">
+                                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                </div>
+                                <h3 className="font-bold text-dark mb-2">Molecular Signaling</h3>
+                                <p className="text-gray-600 text-sm">Vital for studying cellular communication pathways</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Quality Commitment Section */}
+            <section className="py-16 bg-primary text-white">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto text-center">
+                        <h2 className="text-3xl font-heading font-bold mb-6">Our Quality Commitment</h2>
+                        <p className="text-blue-100 mb-8">
+                            With decades of expertise in peptide manufacturing, PeptideLab provides researchers with consistent, high-purity peptides 
+                            that drive groundbreaking discoveries. We prioritize quality and innovation, ensuring that every peptide meets the 
+                            stringent demands of scientific research.
+                        </p>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                            <div className="bg-white/10 p-6 rounded-xl">
+                                <h3 className="font-bold text-lg mb-2">Rigorous Testing</h3>
+                                <p className="text-blue-100 text-sm">Every batch undergoes HPLC and Mass Spectrometry testing</p>
+                            </div>
+                            <div className="bg-white/10 p-6 rounded-xl">
+                                <h3 className="font-bold text-lg mb-2">99%+ Purity</h3>
+                                <p className="text-blue-100 text-sm">Certificate of Analysis (COA) included with every order</p>
+                            </div>
+                            <div className="bg-white/10 p-6 rounded-xl">
+                                <h3 className="font-bold text-lg mb-2">Same Day Shipping</h3>
+                                <p className="text-blue-100 text-sm">Fast shipping from the USA with tracking</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Medical Partners LogoLoop Section */}
             <section className="py-12 bg-white">
                 <div className="text-center">
@@ -109,16 +194,16 @@ export default function AboutPage() {
             </section>
 
             {/* CTA Section */}
-            <section className="py-16 text-center">
+            <section className="py-16 text-center bg-gray-50">
                 <div className="container mx-auto px-4">
-                    <h2 className="text-3xl font-heading font-bold text-dark mb-6">Join Our Mission</h2>
+                    <h2 className="text-3xl font-heading font-bold text-dark mb-6">Ready to Advance Your Research?</h2>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-                        Whether you're an athlete optimizing recovery, someone focused on sustainable weight loss,
-                        or simply looking to feel like yourself again, we're here to support your journey.
+                        When you need research peptides for sale, trust PeptideLab for unparalleled precision and reliability. 
+                        Our peptides undergo rigorous quality control and testing to ensure the highest purity standards.
                     </p>
                     <div className="flex justify-center gap-4">
                         <Link href="/shop">
-                            <Button variant="primary" size="lg">Shop Now</Button>
+                            <Button variant="primary" size="lg">Browse Products</Button>
                         </Link>
                         <Link href="/contact">
                             <Button variant="outline" size="lg">Contact Us</Button>

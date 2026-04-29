@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ToasterProvider from "@/components/providers/ToasterProvider";
+import CookieConsent from "@/components/CookieConsent";
 
 
 export const metadata: Metadata = {
@@ -56,6 +57,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning={true}>
         <ToasterProvider />
+        <CookieConsent />
         <Navbar />
         <main className="min-h-screen">
           {children}
