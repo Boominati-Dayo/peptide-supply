@@ -278,28 +278,36 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Carousel for mobile, grid for desktop */}
-          <div className="testimonials-carousel">
-            {testimonials.length > 0 ? (
-              testimonials.map((t: any) => (
-                <div key={t._id} className="testimonial-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col h-full">
-                  <div className="flex mb-4 text-yellow-500">
-                    {'★'.repeat(Math.floor(t.rating))}
-                    {t.rating % 1 !== 0 ? '½' : ''}
-                  </div>
-                  <p className="text-gray-600 italic mb-8 flex-1 font-sans leading-relaxed">"{t.message}"</p>
-                  <div>
-                    <p className="font-bold text-dark">{t.name}</p>
-                    <p className="text-xs text-gray-400 uppercase tracking-widest mt-1">Verified Researcher</p>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <div className="col-span-full text-center py-10">
-                <p className="text-gray-400 italic">No testimonials yet.</p>
-              </div>
-            )}
-          </div>
+          {/* Testimonials Carousel */}
+          {testimonials.length > 0 ? (
+            <div className="testimonials-slider">
+              <LogoLoop
+                logos={testimonials.map((t: any) => ({
+                  node: (
+                    <div className="testimonial-slide bg-white p-6 mx-4 rounded-3xl shadow-sm border border-gray-100 w-[320px] flex-shrink-0">
+                      <div className="flex mb-3 text-yellow-500 text-sm">
+                        {'★'.repeat(Math.floor(t.rating))}
+                        {t.rating % 1 !== 0 ? '½' : ''}
+                      </div>
+                      <p className="text-gray-600 italic mb-4 text-sm leading-relaxed">"{t.message.length > 150 ? t.message.substring(0, 150) + '...' : t.message}"</p>
+                      <p className="font-bold text-dark text-sm">{t.name}</p>
+                    </div>
+                  ),
+                  title: t.name,
+                }))}
+                speed={50}
+                direction="left"
+                logoHeight={180}
+                gap={20}
+                pauseOnHover
+                ariaLabel="Customer testimonials"
+              />
+            </div>
+          ) : (
+            <div className="text-center py-10">
+              <p className="text-gray-400 italic">No testimonials yet.</p>
+            </div>
+          )}
         </div>
       </section>
     </div>
