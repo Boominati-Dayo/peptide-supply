@@ -10,6 +10,13 @@ export default function AboutPage() {
         { src: '/images/partner-logos/bachem_logo_blue-1-150x31.png', alt: 'Bachem', href: '#' },
         { src: '/images/partner-logos/bioxconomy_logo.png', alt: 'Bioxconomy', href: '#' },
         { src: '/images/partner-logos/thesciencetime_logo.png', alt: 'ScienceTime', href: '#' },
+        { src: '/images/partner-logos/hypebae_logo.png', alt: 'Hypebae', href: '#' },
+        { src: '/images/partner-logos/nih_logo.png', alt: 'NIH', href: '#' },
+        { src: '/images/partner-logos/pubmed_logo.png', alt: 'PubMed', href: '#' },
+        { src: '/images/partner-logos/fda_logo.png', alt: 'FDA', href: '#' },
+        { src: '/images/partner-logos/mayo_logo.png', alt: 'Mayo Clinic', href: '#' },
+        { src: '/images/partner-logos/hopkins_logo.png', alt: 'Johns Hopkins', href: '#' },
+        { src: '/images/partner-logos/stanford_logo.png', alt: 'Stanford Medicine', href: '#' },
     ];
 
     return (
