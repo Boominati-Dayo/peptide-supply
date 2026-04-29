@@ -1,10 +1,25 @@
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import Image from 'next/image';
+import Seo from '@/components/Seo';
+import LogoLoop from '@/components/LogoLoop';
 
 export default function AboutPage() {
+    const medicalLogos = [
+        { src: '/images/partner-logos/WebMD_logo-150x35.png', alt: 'WebMD', href: '#' },
+        { src: '/images/partner-logos/bachem_logo_blue-1-150x31.png', alt: 'Bachem', href: '#' },
+        { src: '/images/partner-logos/bioxconomy_logo.png', alt: 'Bioxconomy', href: '#' },
+        { src: '/images/partner-logos/thesciencetime_logo.png', alt: 'ScienceTime', href: '#' },
+    ];
+
     return (
         <div className="bg-white">
+            <Seo 
+                title="About PeptideLab – Premium Research-Grade Peptides"
+                description="Learn about PeptideLab's mission to provide high-purity, lab-tested peptides for research professionals worldwide. GMP-compliant manufacturing with full transparency."
+                keywords="about peptides, peptide company, research peptides supplier, peptide lab, GMP peptides, peptide manufacturer, biotech company"
+            />
+            
             {/* Hero Section */}
             <section className="bg-primary text-white py-20">
                 <div className="container mx-auto px-4 text-center">
@@ -70,6 +85,25 @@ export default function AboutPage() {
                                 className="object-cover"
                             />
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Medical Partners LogoLoop Section */}
+            <section className="py-12 bg-white">
+                <div className="container mx-auto px-6 text-center">
+                    <h3 className="text-2xl font-heading font-bold text-dark mb-6">Medical & Research Partners</h3>
+                    <div className="mt-4">
+                        <LogoLoop
+                            logos={medicalLogos}
+                            speed={100}
+                            direction="left"
+                            logoHeight={40}
+                            gap={50}
+                            fadeOut
+                            fadeOutColor="#ffffff"
+                            ariaLabel="Medical and research partners"
+                        />
                     </div>
                 </div>
             </section>

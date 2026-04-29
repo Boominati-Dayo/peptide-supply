@@ -168,3 +168,48 @@ html {
 ::-webkit-scrollbar-thumb {
   @apply bg-primary rounded-full hover:bg-secondary transition-colors;
 }
+
+/* Testimonials Carousel - Mobile */
+@media (max-width: 768px) {
+  .testimonials-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding: 8px 4px 16px 4px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .testimonials-carousel::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .testimonials-carousel::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+  
+  .testimonials-carousel::-webkit-scrollbar-thumb {
+    background: #0a4d7d;
+    border-radius: 3px;
+  }
+  
+  .testimonial-card {
+    flex: 0 0 auto;
+    width: 280px;
+    scroll-snap-align: start;
+  }
+}
+
+/* Desktop - grid layout */
+@media (min-width: 769px) {
+  .testimonials-carousel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .testimonial-card {
+    width: 100%;
+  }
+}

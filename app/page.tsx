@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import ProductCard from '@/components/ui/Card';
+import Seo from '@/components/Seo';
+import LogoLoop from '@/components/LogoLoop';
 
 export default function Home() {
   const [products, setProducts] = useState<any[]>([]);
@@ -44,6 +46,7 @@ export default function Home() {
       </div>
     );
   }
+  
   const partnerLogos = [
     { name: 'WebMD', src: '/images/partner-logos/WebMD_logo-150x35.png' },
     { name: 'Bachem', src: '/images/partner-logos/bachem_logo_blue-1-150x31.png' },
@@ -52,8 +55,21 @@ export default function Home() {
     { name: 'ScienceTime', src: '/images/partner-logos/thesciencetime_logo.png' },
   ];
 
+  const medicalLogos = [
+    { src: '/images/partner-logos/WebMD_logo-150x35.png', alt: 'WebMD', href: '#' },
+    { src: '/images/partner-logos/bachem_logo_blue-1-150x31.png', alt: 'Bachem', href: '#' },
+    { src: '/images/partner-logos/bioxconomy_logo.png', alt: 'Bioxconomy', href: '#' },
+    { src: '/images/partner-logos/thesciencetime_logo.png', alt: 'ScienceTime', href: '#' },
+  ];
+
   return (
     <div className="bg-white scroll-smooth overflow-x-hidden">
+      <Seo 
+        title="PeptideLab – Premium Research-Grade Peptides | GMP Certified"
+        description="PeptideLab offers high-purity, lab-tested peptides for research and professional applications. GMP-compliant manufacturing, HPLC verified purity, worldwide shipping."
+        keywords="peptides, peptide synthesis, research peptides, RUO peptides, GMP peptides, laboratory peptides, peptide purity, peptide suppliers, biotech peptides, custom peptide synthesis, peptide manufacturing"
+      />
+      
       {/* SECTION 1: Intro / Hero Section with Hero Alternating Columns */}
       <section className="relative pt-16 pb-12 md:pb-0 overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
@@ -130,6 +146,25 @@ export default function Home() {
 
             {/* Mobile Background Filler */}
             <div className="md:hidden absolute inset-0 bg-[#E1F9F1] -z-10 -mx-6 px-6"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Medical Partners LogoLoop Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-6 text-center">
+          <h3 className="text-2xl font-heading font-bold text-dark mb-6">Medical & Research Partners</h3>
+          <div className="mt-4">
+            <LogoLoop
+              logos={medicalLogos}
+              speed={100}
+              direction="left"
+              logoHeight={40}
+              gap={50}
+              fadeOut
+              fadeOutColor="#ffffff"
+              ariaLabel="Medical and research partners"
+            />
           </div>
         </div>
       </section>
@@ -261,10 +296,11 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Carousel for mobile, grid for desktop */}
+          <div className="testimonials-carousel">
             {testimonials.length > 0 ? (
               testimonials.map((t: any) => (
-                <div key={t._id} className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col h-full">
+                <div key={t._id} className="testimonial-card bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col h-full">
                   <div className="flex mb-4 text-yellow-500">
                     {'★'.repeat(Math.floor(t.rating))}
                     {t.rating % 1 !== 0 ? '½' : ''}
