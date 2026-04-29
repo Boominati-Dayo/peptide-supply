@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function AdminLoginPage() {
     const [username, setUsername] = useState('');
@@ -65,6 +66,7 @@ export default function AdminLoginPage() {
                                 placeholder="Admin Username"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
+                                autoComplete="username"
                             />
                         </div>
                         <div>
@@ -78,6 +80,7 @@ export default function AdminLoginPage() {
                                 placeholder="Admin Password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
+                                autoComplete="current-password"
                             />
                         </div>
                     </div>
@@ -95,6 +98,12 @@ export default function AdminLoginPage() {
                                 </svg>
                             ) : 'Sign in'}
                         </button>
+                    </div>
+                    
+                    <div className="text-center">
+                        <Link href="/" className="text-sm text-primary hover:text-primary/80 font-medium">
+                            ← Back to Main Site
+                        </Link>
                     </div>
                 </form>
             </div>
