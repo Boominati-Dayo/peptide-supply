@@ -175,6 +175,7 @@ export default function Navbar() {
                                                     <div className="py-8 text-center">
                                                         <p className="text-gray-400 text-sm">No results found for "{searchQuery}"</p>
                                                         <button 
+                                                            type="button"
                                                             onClick={() => router.push(`/shop?search=${searchQuery}`)}
                                                             className="mt-2 text-primary text-sm font-medium hover:underline"
                                                         >
@@ -188,6 +189,7 @@ export default function Navbar() {
                                                     <div className="flex flex-wrap gap-2">
                                                         {['BPC-157', 'TB-500', 'Semaglutide'].map((tag) => (
                                                             <button
+                                                                type="button"
                                                                 key={tag}
                                                                 onClick={() => setSearchQuery(tag)}
                                                                 className="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-xs font-bold text-gray-600 transition-colors"
@@ -219,6 +221,7 @@ export default function Navbar() {
 
                         {/* Mobile Menu Button - Visible on Mobile Only */}
                         <button
+                            type="button"
                             className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors ml-4"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             aria-label="Toggle menu"

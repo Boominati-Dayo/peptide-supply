@@ -16,12 +16,26 @@ export default function Footer() {
         e.preventDefault();
         setSubscribeStatus('loading');
 
-        // TODO: Implement newsletter subscription API
-        setTimeout(() => {
-            setSubscribeStatus('success');
-            setEmail('');
+        try {
+            const res = await fetch('/api/newsletter/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email }),
+            });
+
+            if (res.ok) {
+                setSubscribeStatus('success');
+                setEmail('');
+                setTimeout(() => setSubscribeStatus('idle'), 3000);
+            } else {
+                setSubscribeStatus('error');
+                setTimeout(() => setSubscribeStatus('idle'), 3000);
+            }
+        } catch (error) {
+            console.error('Newsletter subscription error:', error);
+            setSubscribeStatus('error');
             setTimeout(() => setSubscribeStatus('idle'), 3000);
-        }, 1000);
+        }
     };
 
     return (
@@ -106,23 +120,23 @@ export default function Footer() {
 
                 {/* Newsletter Section */}
                 <div className="mt-12 pt-8 border-t border-primary-400">
-                    <div className="max-w-md">
+                    <div className="max-w-md mx-auto md:mx-0 text-center md:text-left">
                         <h4 className="font-semibold text-lg mb-2">Newsletter</h4>
                         <p className="text-gray-300 text-sm mb-4">
                             Be the first to know about new collections, exclusive offers, and the latest in peptide science.
                         </p>
-                        <form onSubmit={handleNewsletterSubmit} className="flex md:flex-row flex-col gap-2">
+                        <form onSubmit={handleNewsletterSubmit} className="flex md:flex-row flex-col gap-2 justify-center">
                             <input
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Enter your email"
                                 required
-                                className="flex-1 px-4 py-2 rounded-lg bg-white text-dark focus:outline-none focus:ring-2 focus:ring-accent disabled:opacity-50"
+                                className="flex-1 px-4 py-2 rounded-lg bg-white text-dark focus:outline-none focus:ring-2 focus:ring-accent disabled:opacity-50 min-w-0"
                             />
                             <button
                                 type="submit"
-                                className="px-6 py-2 bg-accent text-dark font-semibold rounded-lg hover:bg-accent-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="px-6 py-2 bg-accent text-dark font-semibold rounded-lg hover:bg-accent-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                             >
                                 {subscribeStatus === 'loading' ? 'Subscribing...' : 'Subscribe'}
                             </button>

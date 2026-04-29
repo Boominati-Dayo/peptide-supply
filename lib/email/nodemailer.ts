@@ -236,4 +236,22 @@ export const emailTemplates = {
       <p>If you have any further questions, please don't hesitate to reach out.</p>
     `,
   }),
+
+  // Newsletter subscription confirmation
+  newsletterSubscription: (email: string) => ({
+    subject: 'Welcome to PeptideLab Newsletter!',
+    html: `
+      <h2>Welcome to PeptideLab!</h2>
+      <p>Thank you for subscribing to our newsletter. Your email <strong>${email}</strong> has been successfully added to our mailing list.</p>
+      <h3>What You'll Receive:</h3>
+      <ul>
+        <li>Exclusive offers and promotions</li>
+        <li>New product announcements</li>
+        <li>Latest updates in peptide science</li>
+        <li>Research insights and educational content</li>
+      </ul>
+      <p>Stay tuned for exciting updates from PeptideLab!</p>
+      <p>Best regards,<br>The PeptideLab Team</p>
+    `,
+  }),
 };
