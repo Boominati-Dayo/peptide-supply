@@ -47,7 +47,7 @@ export default function AboutPage() {
             </section>
 
             {/* Why Purity? Section */}
-            <section className="bg-gray-50 py-16">
+            <section className="bg-gray-50 py-16 md:py-0">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-heading font-bold text-dark mb-4">Why PeptideLab?</h2>
@@ -77,7 +77,7 @@ export default function AboutPage() {
                                 </p>
                             </div>
                         </div>
-                        <div className="relative h-64 md:h-96 w-full">
+                        <div className="relative h-[500px] md:h-96 w-full">
                             <Image
                                 src="/images/about-peptidelab.png"
                                 alt="PeptideLab Scientific Excellence"
