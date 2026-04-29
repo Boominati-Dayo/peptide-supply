@@ -16,8 +16,8 @@ export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    const [searchResults, setSearchResults] = useState<{ _id: string, name: string, category: string }[]>([]);
-    const [allProducts, setAllProducts] = useState<{ _id: string, name: string, category: string }[]>([]);
+    const [searchResults, setSearchResults] = useState<{ _id: string, name: string, category: string, images: string[] }[]>([]);
+    const [allProducts, setAllProducts] = useState<{ _id: string, name: string, category: string, images: string[] }[]>([]);
     const [mounted, setMounted] = useState(false);
     const searchRef = useRef<HTMLDivElement>(null);
 
@@ -157,7 +157,7 @@ export default function Navbar() {
                                                             >
                                                                 <div className="w-10 h-10 bg-gray-200 rounded-lg flex-shrink-0">
                                                                     <Image 
-                                                                        src="/images/placeholder-product.jpg" 
+                                                                        src={product.images?.[0] || '/images/placeholder-product.jpg'} 
                                                                         alt={product.name}
                                                                         width={40}
                                                                         height={40}
