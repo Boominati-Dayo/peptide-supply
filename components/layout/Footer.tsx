@@ -8,6 +8,7 @@ export default function Footer() {
     const pathname = usePathname();
     const [email, setEmail] = useState('');
     const [subscribeStatus, setSubscribeStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+    const [subscribeMessage, setSubscribeMessage] = useState('');
 
     // Do not show Footer on admin pages
     if (pathname && (pathname.startsWith('/admin') || pathname === '/admin-login')) return null;
@@ -15,6 +16,7 @@ export default function Footer() {
     const handleNewsletterSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setSubscribeStatus('loading');
+        setSubscribeMessage('');
 
         try {
             const res = await fetch('/api/newsletter/subscribe', {
@@ -23,18 +25,30 @@ export default function Footer() {
                 body: JSON.stringify({ email }),
             });
 
+            const data = await res.json();
+
             if (res.ok) {
                 setSubscribeStatus('success');
+                setSubscribeMessage('Successfully subscribed! Check your email.');
                 setEmail('');
-                setTimeout(() => setSubscribeStatus('idle'), 3000);
             } else {
                 setSubscribeStatus('error');
-                setTimeout(() => setSubscribeStatus('idle'), 3000);
+                setSubscribeMessage(data.message || 'Something went wrong');
             }
+            
+            // Reset after 3 seconds
+            setTimeout(() => {
+                setSubscribeStatus('idle');
+                setSubscribeMessage('');
+            }, 3000);
         } catch (error) {
             console.error('Newsletter subscription error:', error);
             setSubscribeStatus('error');
-            setTimeout(() => setSubscribeStatus('idle'), 3000);
+            setSubscribeMessage('Something went wrong. Please try again.');
+            setTimeout(() => {
+                setSubscribeStatus('idle');
+                setSubscribeMessage('');
+            }, 3000);
         }
     };
 
@@ -141,8 +155,10 @@ export default function Footer() {
                                 {subscribeStatus === 'loading' ? 'Subscribing...' : 'Subscribe'}
                             </button>
                         </form>
-                        {subscribeStatus === 'success' && (
-                            <p className="text-accent text-sm mt-2">✓ Successfully subscribed!</p>
+                        {subscribeMessage && (
+                            <p className={`text-sm mt-2 ${subscribeStatus === 'success' ? 'text-green-400' : 'text-red-400'}`}>
+                                {subscribeMessage}
+                            </p>
                         )}
                     </div>
                 </div>
