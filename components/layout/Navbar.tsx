@@ -2,31 +2,22 @@
 
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 import { useCartStore } from '@/lib/store/cart';
 
-const MOCK_PRODUCTS = [
-    { id: '1', name: 'BPC-157 10mg', category: 'Recovery' },
-    { id: '2', name: 'TB-500 5mg', category: 'Recovery' },
-    { id: '3', name: 'Semaglutide 5mg', category: 'Weight Loss' },
-    { id: '4', name: 'Ipamorelin 5mg', category: 'Performance' },
-    { id: '5', name: 'CJC-1295 5mg', category: 'Performance' },
-    { id: '6', name: 'Melanotan II 10mg', category: 'Lifestyle' },
-    { id: '7', name: 'Tirzepatide 10mg', category: 'Weight Loss' },
-    { id: '8', name: 'Retatrutide 10mg', category: 'Research' },
-];
-
 export default function Navbar() {
     const pathname = usePathname();
+    const router = useRouter();
     const { getItemCount } = useCartStore();
     const cartCount = getItemCount();
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    const [searchResults, setSearchResults] = useState<{ id: string, name: string, category: string }[]>([]);
+    const [searchResults, setSearchResults] = useState<{ _id: string, name: string, category: string }[]>([]);
+    const [allProducts, setAllProducts] = useState<{ _id: string, name: string, category: string }[]>([]);
     const [mounted, setMounted] = useState(false);
     const searchRef = useRef<HTMLDivElement>(null);
 
@@ -34,16 +25,38 @@ export default function Navbar() {
         setMounted(true);
     }, []);
 
+    // Fetch products on mount
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const res = await fetch('/api/products');
+                const data = await res.json();
+                if (data.success) {
+                    setAllProducts(data.data);
+                }
+            } catch (error) {
+                console.error('Failed to fetch products:', error);
+            }
+        };
+        fetchProducts();
+    }, []);
+
     useEffect(() => {
         if (searchQuery.trim() === '') {
             setSearchResults([]);
             return;
         }
-        const filtered = MOCK_PRODUCTS.filter(p =>
-            p.name.toLowerCase().includes(searchQuery.toLowerCase())
+        const filtered = allProducts.filter(p =>
+            p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            p.category?.toLowerCase().includes(searchQuery.toLowerCase())
         );
-        setSearchResults(filtered);
-    }, [searchQuery]);
+        setSearchResults(filtered.slice(0, 8));
+    }, [searchQuery, allProducts]);
+
+    const handleProductClick = () => {
+        setSearchOpen(false);
+        setSearchQuery('');
+    };
 
     // Close search on outside click
     useEffect(() => {
@@ -106,6 +119,7 @@ export default function Navbar() {
                                     className={`p-2 hover:bg-gray-100 rounded-full transition-colors ${searchOpen ? 'text-primary bg-gray-50' : 'text-dark'}`}
                                     aria-label="Search"
                                     onClick={() => setSearchOpen(!searchOpen)}
+                                    type="button"
                                 >
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -133,21 +147,39 @@ export default function Navbar() {
                                         <div className="max-h-64 overflow-y-auto custom-scrollbar">
                                             {searchQuery.trim() !== '' ? (
                                                 searchResults.length > 0 ? (
-                                                    <div className="grid grid-cols-2 gap-3">
+                                                    <div className="space-y-2">
                                                         {searchResults.map((product) => (
                                                             <Link
-                                                                key={product.id}
-                                                                href={`/products/${product.id}`}
-                                                                onClick={() => setSearchOpen(false)}
-                                                                className="p-3 bg-gray-50 hover:bg-primary/5 rounded-xl border border-transparent hover:border-primary/20 transition-all text-sm font-bold text-dark text-center line-clamp-1"
+                                                                key={product._id}
+                                                                href={`/products/${product._id}`}
+                                                                onClick={handleProductClick}
+                                                                className="flex items-center gap-3 p-3 bg-gray-50 hover:bg-primary/5 rounded-xl border border-transparent hover:border-primary/20 transition-all"
                                                             >
-                                                                {product.name}
+                                                                <div className="w-10 h-10 bg-gray-200 rounded-lg flex-shrink-0">
+                                                                    <Image 
+                                                                        src="/images/placeholder-product.jpg" 
+                                                                        alt={product.name}
+                                                                        width={40}
+                                                                        height={40}
+                                                                        className="object-cover rounded-lg"
+                                                                    />
+                                                                </div>
+                                                                <div>
+                                                                    <p className="text-sm font-bold text-dark line-clamp-1">{product.name}</p>
+                                                                    <p className="text-xs text-gray-500">{product.category}</p>
+                                                                </div>
                                                             </Link>
                                                         ))}
                                                     </div>
                                                 ) : (
                                                     <div className="py-8 text-center">
                                                         <p className="text-gray-400 text-sm">No results found for "{searchQuery}"</p>
+                                                        <button 
+                                                            onClick={() => router.push(`/shop?search=${searchQuery}`)}
+                                                            className="mt-2 text-primary text-sm font-medium hover:underline"
+                                                        >
+                                                            View all shop results →
+                                                        </button>
                                                     </div>
                                                 )
                                             ) : (

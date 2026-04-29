@@ -77,7 +77,7 @@ export default function AboutPage() {
                                 </p>
                             </div>
                         </div>
-                        <div className="relative h-96 md:rounded-lg overflow-hidden shadow-xl border border-gray-100">
+                        <div className="relative h-64 md:h-96 w-full">
                             <Image
                                 src="/images/about-peptidelab.png"
                                 alt="PeptideLab Scientific Excellence"
@@ -91,7 +91,7 @@ export default function AboutPage() {
 
             {/* Medical Partners LogoLoop Section */}
             <section className="py-12 bg-white">
-                <div className="container mx-auto px-6 text-center">
+                <div className="text-center">
                     <h3 className="text-2xl font-heading font-bold text-dark mb-6">Medical & Research Partners</h3>
                     <div className="mt-4">
                         <LogoLoop

@@ -150,25 +150,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Medical Partners LogoLoop Section */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-6 text-center">
-          <h3 className="text-2xl font-heading font-bold text-dark mb-6">Medical & Research Partners</h3>
-          <div className="mt-4">
-            <LogoLoop
-              logos={medicalLogos}
-              speed={100}
-              direction="left"
-              logoHeight={40}
-              gap={50}
-              fadeOut
-              fadeOutColor="#ffffff"
-              ariaLabel="Medical and research partners"
-            />
-          </div>
-        </div>
-      </section>
-
       {/* SECTION 2: Product Carousel Section */}
       <section className="relative bg-white overflow-hidden">
         {/* Top Header with Gray Background Area */}
@@ -206,32 +187,33 @@ export default function Home() {
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Partner Logos Section */}
-        <div className="mt-12 text-center pb-20">
-          <h3 className="text-2xl md:text-3xl font-heading mb-12">Partner in Research</h3>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:opacity-100 transition-all duration-500">
-            {partnerLogos.map((logo, idx) => (
-              <div key={idx} className="relative h-12 w-32 md:w-40">
-                <Image
-                  src={logo.src}
-                  alt={logo.name}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            ))}
+      {/* Medical Partners LogoLoop Section */}
+      <section className="py-12 bg-white">
+        <div className="text-center">
+          <h3 className="text-2xl font-heading font-bold text-dark mb-6">Medical & Research Partners</h3>
+          <div className="mt-4">
+            <LogoLoop
+              logos={medicalLogos}
+              speed={100}
+              direction="left"
+              logoHeight={40}
+              gap={50}
+              fadeOut
+              fadeOutColor="#ffffff"
+              ariaLabel="Medical and research partners"
+            />
           </div>
         </div>
       </section>
-
       {/* SECTION 3: Partner Info & Feature Grid */}
       <section className="py-24 md:py-32 bg-white">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center gap-16 mb-40 max-w-6xl mx-auto">
             {/* sophisticated lab image Placeholder */}
             <div className="w-full md:w-1/2 flex justify-center md:justify-start -mx-6 md:mx-0">
-              <div className="aspect-square w-full md:max-w-md relative overflow-hidden md:rounded-3xl rounded-none group shadow-sm h-[300px] md:h-auto">
+              <div className="aspect-square w-full md:max-w-md relative overflow-hidden rounded-none group h-[440px] md:h-auto">
                 <Image
                   src="/images/sophisticated-lab.png"
                   alt="Sophisticated Research Laboratory"

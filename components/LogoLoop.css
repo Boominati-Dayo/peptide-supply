@@ -3,6 +3,15 @@
   --logoloop-gap: 32px;
   --logoloop-logoHeight: 28px;
   --logoloop-fadeColorAuto: #ffffff;
+  overflow: hidden;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .logoloop {
+    --logoloop-gap: 20px;
+    --logoloop-logoHeight: 24px;
+  }
 }
 
 .logoloop--vertical {
