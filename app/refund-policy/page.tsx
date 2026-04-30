@@ -6,7 +6,7 @@ export default function RefundPolicyPage() {
             <div className="prose prose-blue max-w-none text-gray-600 space-y-8">
                 <section>
                     <p className="text-lg leading-relaxed">
-                        At <span className="font-bold text-dark">PeptideLab</span>, we take pride in providing only the highest-quality research peptides. Due to the sensitive nature of our products, all payments made to us are non-refundable.
+                        At <span className="font-bold text-dark">PeptideSupply</span>, we take pride in providing only the highest-quality research peptides. Due to the sensitive nature of our products, all payments made to us are non-refundable.
                     </p>
                     <p className="mt-4">
                         However, we understand that exceptional situations may occur, and we strive to handle each case with fairness and transparency.
@@ -16,7 +16,7 @@ export default function RefundPolicyPage() {
                 <section>
                     <h2 className="text-2xl font-bold text-dark mb-4">1. Refunds</h2>
                     <p>
-                        Payments made to PeptideLab are non-refundable under normal circumstances.
+                        Payments made to PeptideSupply are non-refundable under normal circumstances.
                         If a refund is approved at our discretion, a non-refundable, non-negotiable 10% restocking fee will be applied to the total order amount.
                     </p>
                     <div className="mt-4 bg-gray-50 p-6 rounded-xl border border-gray-100">
@@ -28,13 +28,13 @@ export default function RefundPolicyPage() {
                         </ul>
                     </div>
                     <p className="mt-4 italic">
-                        If you have concerns or disputes regarding charges, you agree to contact PeptideLab directly before initiating any chargeback or cancellation request. Attempting to dispute charges without first contacting us may result in suspension of future purchasing privileges.
+                        If you have concerns or disputes regarding charges, you agree to contact PeptideSupply directly before initiating any chargeback or cancellation request. Attempting to dispute charges without first contacting us may result in suspension of future purchasing privileges.
                     </p>
                 </section>
 
                 <section>
                     <h2 className="text-2xl font-bold text-dark mb-4">2. Order Cancellations</h2>
-                    <p className="mb-4">PeptideLab reserves the right to cancel or decline any order if:</p>
+                    <p className="mb-4">PeptideSupply reserves the right to cancel or decline any order if:</p>
                     <ul className="list-disc pl-5 space-y-2 mb-4">
                         <li>Your payment method is declined or flagged for potential fraud.</li>
                         <li>We suspect the order is fraudulent or violates our Terms of Service.</li>

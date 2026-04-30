@@ -58,7 +58,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
                     {/* Brand Section */}
                     <div className="lg:col-span-2">
-                        <h3 className="text-2xl font-heading mb-4">PeptideLab</h3>
+                        <h3 className="text-2xl font-heading mb-4">PeptideSupply</h3>
                         <p className="text-gray-300 mb-4 leading-relaxed">
                             Clinically tested, GMP manufactured, batch-specific COAs — delivering
                             premium peptides for clinics, athletes, and health innovators.
@@ -165,7 +165,7 @@ export default function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="mt-8 pt-8 border-t border-primary-400 text-center text-gray-300 text-sm">
-                    <p>© {new Date().getFullYear()} PeptideLab | All Rights Reserved.</p>
+                    <p>© {new Date().getFullYear()} PeptideSupply | All Rights Reserved.</p>
                 </div>
             </div>
         </footer>

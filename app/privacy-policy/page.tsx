@@ -7,7 +7,7 @@ export default function PrivacyPolicyPage() {
             <div className="prose prose-blue max-w-none text-gray-600 space-y-10">
                 <section>
                     <p className="text-lg leading-relaxed">
-                        At <span className="font-bold text-dark">PeptideLab</span>, we are committed to protecting your privacy and ensuring a secure experience for all our users. This Global Privacy Policy explains how we collect, use, and safeguard your personal information.
+                        At <span className="font-bold text-dark">PeptideSupply</span>, we are committed to protecting your privacy and ensuring a secure experience for all our users. This Global Privacy Policy explains how we collect, use, and safeguard your personal information.
                     </p>
                 </section>
 
@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
                 <section>
                     <h2 className="text-2xl font-bold text-dark mb-4">4. Sharing of Information</h2>
                     <p>
-                        PeptideLab does <span className="font-bold text-dark italic">not</span> sell, trade, or rent your personal information to third parties. We only share necessary data with trusted service providers who assist us in operating our website, conducting our business, or servicing you (e.g., shipping carriers and payment processors), provided those parties agree to keep this information confidential.
+                        PeptideSupply does <span className="font-bold text-dark italic">not</span> sell, trade, or rent your personal information to third parties. We only share necessary data with trusted service providers who assist us in operating our website, conducting our business, or servicing you (e.g., shipping carriers and payment processors), provided those parties agree to keep this information confidential.
                     </p>
                 </section>
 

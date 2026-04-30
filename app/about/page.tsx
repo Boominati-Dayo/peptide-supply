@@ -22,8 +22,8 @@ export default function AboutPage() {
     return (
         <div className="bg-white">
             <Seo 
-                title="About PeptideLab – Premium Research-Grade Peptides"
-                description="Learn about PeptideLab's mission to provide high-purity, lab-tested peptides for research professionals worldwide. GMP-compliant manufacturing with full transparency."
+                title="About PeptideSupply – Premium Research-Grade Peptides"
+                description="Learn about PeptideSupply's mission to provide high-purity, lab-tested peptides for research professionals worldwide. GMP-compliant manufacturing with full transparency."
                 keywords="about peptides, peptide company, research peptides supplier, peptide lab, GMP peptides, peptide manufacturer, biotech company"
             />
             
@@ -45,7 +45,7 @@ export default function AboutPage() {
                             Our Mission
                         </h2>
                         <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                            At PeptideLab, we are committed to providing the scientific community with the highest-quality research peptides for cutting-edge biomedical studies. 
+                            At PeptideSupply, we are committed to providing the scientific community with the highest-quality research peptides for cutting-edge biomedical studies. 
                             As a leading peptide manufacturing company, we specialize in producing a wide range of synthetic peptides, including biologically active peptides, 
                             peptide hormones, and custom peptide synthesis solutions. Our dedication to quality, purity, and innovation has made us the best peptide company for researchers worldwide.
                         </p>
@@ -57,7 +57,7 @@ export default function AboutPage() {
             <section className="bg-gray-50 py-16 md:py-16">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl font-heading font-bold text-dark mb-4">Why PeptideLab?</h2>
+                        <h2 className="text-3xl font-heading font-bold text-dark mb-4">Why PeptideSupply?</h2>
                         <p className="text-gray-600 max-w-2xl mx-auto">
                             Peptides are taking the world by storm – redefining what's possible in longevity, performance, and vitality science.
                         </p>
@@ -87,7 +87,7 @@ export default function AboutPage() {
                         <div className="relative h-[600px] md:h-96 w-full">
                             <Image
                                 src="/images/about-peptidelab.png"
-                                alt="PeptideLab Scientific Excellence"
+                                alt="PeptideSupply Scientific Excellence"
                                 fill
                                 className="object-cover"
                             />
@@ -159,7 +159,7 @@ export default function AboutPage() {
                     <div className="max-w-4xl mx-auto text-center">
                         <h2 className="text-3xl font-heading font-bold mb-6">Our Quality Commitment</h2>
                         <p className="text-blue-100 mb-8">
-                            With decades of expertise in peptide manufacturing, PeptideLab provides researchers with consistent, high-purity peptides 
+                            With decades of expertise in peptide manufacturing, PeptideSupply provides researchers with consistent, high-purity peptides 
                             that drive groundbreaking discoveries. We prioritize quality and innovation, ensuring that every peptide meets the 
                             stringent demands of scientific research.
                         </p>
@@ -205,7 +205,7 @@ export default function AboutPage() {
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-heading font-bold text-dark mb-6">Ready to Advance Your Research?</h2>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-                        When you need research peptides for sale, trust PeptideLab for unparalleled precision and reliability. 
+                        When you need research peptides for sale, trust PeptideSupply for unparalleled precision and reliability. 
                         Our peptides undergo rigorous quality control and testing to ensure the highest purity standards.
                     </p>
                     <div className="flex justify-center gap-4">

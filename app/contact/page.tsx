@@ -92,7 +92,7 @@ export default function ContactPage() {
 
                                 <div className="mt-12">
                                     <p className="text-sm text-blue-200">
-                                        © 2026 PeptideLab. Made for Advanced Research.
+                                        © 2026 PeptideSupply. Made for Advanced Research.
                                     </p>
                                 </div>
                             </div>

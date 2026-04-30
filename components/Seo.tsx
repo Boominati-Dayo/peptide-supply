@@ -13,8 +13,8 @@ type SeoProps = {
 };
 
 const Seo: React.FC<SeoProps> = ({ title, description, keywords, image, url, article }) => {
-  const defaultTitle = 'PeptideLab – Premium Research-Grade Peptides';
-  const defaultDescription = 'PeptideLab offers high-purity, lab-tested peptides for research and professional applications. GMP-compliant manufacturing, HPLC verified purity, worldwide shipping.';
+  const defaultTitle = 'PeptideSupply – Premium Research-Grade Peptides';
+  const defaultDescription = 'PeptideSupply offers high-purity, lab-tested peptides for research and professional applications. GMP-compliant manufacturing, HPLC verified purity, worldwide shipping.';
   const siteUrl = url ?? 'https://peptide-lab-six.vercel.app';
   const seoTitle = title ?? defaultTitle;
   const seoDescription = description ?? defaultDescription;
@@ -25,7 +25,7 @@ const Seo: React.FC<SeoProps> = ({ title, description, keywords, image, url, art
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'PeptideLab',
+    name: 'PeptideSupply',
     url: siteUrl,
     potentialAction: {
       '@type': 'SearchAction',
@@ -37,7 +37,7 @@ const Seo: React.FC<SeoProps> = ({ title, description, keywords, image, url, art
   const organizationJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'PeptideLab',
+    name: 'PeptideSupply',
     url: siteUrl,
     description: 'Premium research-grade peptide supplier',
     sameAs: []
@@ -54,7 +54,7 @@ const Seo: React.FC<SeoProps> = ({ title, description, keywords, image, url, art
       <meta property="og:type" content={article ? 'article' : 'website'} />
       <meta property="og:url" content={siteUrl} />
       <meta property="og:image" content={seoImage} />
-      <meta property="og:site_name" content="PeptideLab" />
+      <meta property="og:site_name" content="PeptideSupply" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seoTitle} />
       <meta name="twitter:description" content={seoDescription} />

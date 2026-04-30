@@ -9,25 +9,25 @@ import CookieConsent from "@/components/CookieConsent";
 export const metadata: Metadata = {
   metadataBase: new URL("https://peptide-lab-six.vercel.app"),
 
-  title: "PeptideLab — Premium Peptides for Sale",
+  title: "PeptideSupply — Premium Peptides for Sale",
   description:
-    "Shop high-quality peptides for sale at PeptideLab. Trusted formulations, secure ordering, and fast delivery for performance, recovery, and wellness.",
+    "Shop high-quality peptides for sale at PeptideSupply. Trusted formulations, secure ordering, and fast delivery for performance, recovery, and wellness.",
 
   keywords:
     "peptides for sale, buy peptides, premium peptides, peptide shop, peptide supplements",
 
   openGraph: {
-    title: "PeptideLab — Premium Peptides for Sale",
+    title: "PeptideSupply — Premium Peptides for Sale",
     description:
       "High-quality peptides for sale. Secure checkout, trusted formulations, and fast delivery.",
     url: "https://peptide-lab-six.vercel.app",
-    siteName: "PeptideLab",
+    siteName: "PeptideSupply",
     images: [
       {
         url: "/thumbnail.png",
         width: 1200,
         height: 630,
-        alt: "PeptideLab — Premium Peptides for Sale",
+        alt: "PeptideSupply — Premium Peptides for Sale",
       },
     ],
     type: "website",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "PeptideLab — Premium Peptides for Sale",
+    title: "PeptideSupply — Premium Peptides for Sale",
     description:
       "Buy premium peptides online. Trusted quality, fast delivery.",
     images: ["/thumbnail.png"],

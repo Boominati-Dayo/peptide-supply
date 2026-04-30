@@ -72,8 +72,8 @@ export default function Home() {
   return (
     <div className="bg-white scroll-smooth overflow-x-hidden">
       <Seo 
-        title="PeptideLab – Premium Research-Grade Peptides | GMP Certified"
-        description="PeptideLab offers high-purity, lab-tested peptides for research and professional applications. GMP-compliant manufacturing, HPLC verified purity, worldwide shipping."
+        title="PeptideSupply – Premium Research-Grade Peptides | GMP Certified"
+        description="PeptideSupply offers high-purity, lab-tested peptides for research and professional applications. GMP-compliant manufacturing, HPLC verified purity, worldwide shipping."
         keywords="peptides, peptide synthesis, research peptides, RUO peptides, GMP peptides, laboratory peptides, peptide purity, peptide suppliers, biotech peptides, custom peptide synthesis, peptide manufacturing"
       />
       
@@ -126,7 +126,7 @@ export default function Home() {
               </h2>
               <div className="space-y-4 font-sans text-gray-700">
                 <p className="text-lg">
-                  At PeptideLab, we deliver pharmaceutical-grade research compounds subjected to rigorous multi-stage validation. Every batch is verified via high-performance liquid chromatography (HPLC) and mass spectrometry to ensure absolute molecular integrity.
+                  At PeptideSupply, we deliver pharmaceutical-grade research compounds subjected to rigorous multi-stage validation. Every batch is verified via high-performance liquid chromatography (HPLC) and mass spectrometry to ensure absolute molecular integrity.
                 </p>
                 <p className="text-lg">
                   Our commitment to scientific transparency means you receive consistent, high-purity formulations designed to eliminate variables and deliver reproducible results in the most demanding laboratory environments.
@@ -237,7 +237,7 @@ export default function Home() {
                 Your Strategic Ally in Molecular Discovery
               </h2>
               <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-sans max-w-lg">
-                PeptideLab provides more than just compounds; we offer a foundation for breakthrough science through unwavering integrity and a robust, globally-optimized supply chain.
+                PeptideSupply provides more than just compounds; we offer a foundation for breakthrough science through unwavering integrity and a robust, globally-optimized supply chain.
               </p>
               <Link href="/shop" className="inline-block pt-4">
                 <Button className="bg-secondary hover:bg-secondary-600 text-dark font-bold px-12 py-5 shadow-xl rounded-xl transition-all active:scale-95 text-lg">

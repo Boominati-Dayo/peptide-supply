@@ -106,7 +106,7 @@ export default function Navbar() {
                     {/* CENTER: Logo (Desktop Only: Absolute Centered) */}
                     <Link href="/" className="lg:absolute lg:left-1/2 lg:-translate-x-1/2 flex items-center">
                         <div className="text-3xl md:text-4xl font-heading text-primary whitespace-nowrap">
-                            PeptideLab
+                            PeptideSupply
                         </div>
                     </Link>
 
