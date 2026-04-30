@@ -47,14 +47,6 @@ export default function Home() {
     );
   }
   
-  const partnerLogos = [
-    { name: 'WebMD', src: '/images/partner-logos/WebMD_logo-150x35.png' },
-    { name: 'Bachem', src: '/images/partner-logos/bachem_logo_blue-1-150x31.png' },
-    { name: 'Bioxconomy', src: '/images/partner-logos/bioxconomy_logo.png' },
-    { name: 'Hypebae', src: '/images/partner-logos/hypebae_logo.png' },
-    { name: 'ScienceTime', src: '/images/partner-logos/thesciencetime_logo.png' },
-  ];
-
   const medicalLogos = [
     { src: '/images/partner-logos/WebMD_logo-150x35.png', alt: 'WebMD', href: '#' },
     { src: '/images/partner-logos/bachem_logo_blue-1-150x31.png', alt: 'Bachem', href: '#' },
@@ -77,107 +69,296 @@ export default function Home() {
         keywords="peptides, peptide synthesis, research peptides, RUO peptides, GMP peptides, laboratory peptides, peptide purity, peptide suppliers, biotech peptides, custom peptide synthesis, peptide manufacturing"
       />
       
-      {/* SECTION 1: Intro / Hero Section with Hero Alternating Columns */}
-      <section className="relative pt-16 pb-12 md:pb-0 overflow-hidden">
-        <div className="container mx-auto px-6 relative z-10">
-
-          {/* Hero Row 1 */}
-          <div className="flex flex-col md:flex-row items-center gap-12 mb-20 md:mb-32">
-            {/* Left Image (Circle with Dashed Border) */}
-            <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full border-4 rotate-[35deg] border-dashed border-gray-300 bg-gray-100 flex items-center justify-center p-2 transition-transform hover:scale-105 duration-500 shadow-sm group overflow-hidden">
-                <Image
-                  src="/images/transparent-peptide-bottle.png"
-                  alt="Peptide Bottle"
-                  fill
-                  className="object-contain p-8 group-hover:scale-110 transition-transform duration-700"
-                />
+      {/* HERO SECTION - Creative Skewed Design */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        {/* Background with skewed shapes */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-primary-100/30"></div>
+        <div className="absolute top-0 right-0 w-[60%] h-full bg-primary/5 transform -skew-x-12"></div>
+        <div className="absolute bottom-0 left-0 w-[40%] h-[60%] bg-secondary/10 transform skew-x-12 rounded-t-full"></div>
+        
+        <div className="container mx-auto px-6 relative z-10 py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Content */}
+            <div className="space-y-8">
+              <div className="inline-block">
+                <span className="px-4 py-2 bg-primary text-white text-sm font-bold rounded-full shadow-lg">
+                  🔬 Research Grade
+                </span>
+              </div>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl text-dark font-bold leading-tight">
+                Purity in <span className="text-primary">Every</span> Molecule
+              </h1>
+              <p className="text-xl text-gray-600 max-w-xl leading-relaxed">
+                Premium research-grade peptides manufactured under strict quality standards. 
+                HPLC verified. GMP compliant. Delivered globally.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/shop">
+                  <Button size="lg" className="shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                    Explore Products
+                  </Button>
+                </Link>
+                <Link href="/about">
+                  <Button size="lg" variant="outline" className="border-2 border-primary/30 hover:border-primary transition-all">
+                    Our Science
+                  </Button>
+                </Link>
+              </div>
+              
+              {/* Stats */}
+              <div className="flex gap-8 pt-4">
+                <div className="text-center">
+                  <p className="text-3xl font-bold text-primary">99%+</p>
+                  <p className="text-sm text-gray-500">Purity Guaranteed</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-3xl font-bold text-primary">50K+</p>
+                  <p className="text-sm text-gray-500">Researchers Served</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-3xl font-bold text-primary">120+</p>
+                  <p className="text-sm text-gray-500">Countries</p>
+                </div>
               </div>
             </div>
-
-            {/* Right Content */}
-            <div className="w-full md:w-1/2 text-left space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl text-dark leading-tight">
-                Trusted Source for Research-Grade Peptides
-              </h1>
-              <p className="text-2xl md:text-3xl italic text-dark font-heading">
-                Purity. Precision. Performance.
-              </p>
-              <p className="text-lg text-gray-600 max-w-xl leading-relaxed font-sans">
-                High-purity, lab-tested peptides manufactured under strict quality standards to support professional and research-grade applications worldwide.
-              </p>
-              <Link href="/shop" className="inline-block">
-                <Button size="lg" className="bg-secondary hover:bg-secondary-600 text-dark font-semibold px-10 py-4 shadow-md rounded-lg transition-all duration-300 active:scale-95">
-                  Shop Now
-                </Button>
-              </Link>
+            
+            {/* Creative Image Composition */}
+            <div className="relative h-[500px] lg:h-[600px]">
+              {/* Main skewed container */}
+              <div className="absolute inset-0 transform rotate-3 hover:rotate-0 transition-transform duration-700 ease-out">
+                <div className="relative w-full h-full clip-path-polygon">
+                  <Image
+                    src="/images/ManyPeptideBottlesOnATreansparentSurfaceWithLightShiningFromBeneathTheTable.jpg"
+                    alt="Premium Peptide Products"
+                    fill
+                    className="object-cover"
+                  />
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent"></div>
+                  
+                  {/* Floating triangular badge */}
+                  <div className="absolute bottom-8 right-8 bg-white/95 backdrop-blur-sm p-6 shadow-2xl">
+                    <p className="text-3xl font-bold text-primary">ISO</p>
+                    <p className="text-xs text-gray-500">Certified</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Floating secondary image - skewed opposite */}
+              <div className="absolute -bottom-10 -left-10 w-48 h-48 md:w-64 md:h-64 transform -rotate-6 hover:rotate-0 transition-transform duration-500 z-20">
+                <div className="relative w-full h-full overflow-hidden shadow-2xl">
+                  <Image
+                    src="/images/HandsWithPinkGlovesPullingOutPeptideFromItsBottleWithASyringe.jpg"
+                    alt="Expert Handling"
+                    fill
+                    className="object-cover hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+              
+              {/* Decorative angled element */}
+              <div className="absolute top-10 -right-5 w-24 h-24 bg-primary transform rotate-45 opacity-20"></div>
             </div>
           </div>
+        </div>
+        
+        {/* Wave divider */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+            <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
+          </svg>
+        </div>
+      </section>
 
-          {/* Precision Peptides Row (Alternating/Reversed) */}
-          <div className="flex flex-col md:flex-row items-center gap-12 pt-12 md:pt-24 mt-8 md:mt-24 relative">
-            {/* Background Highlight that extends to edge on desktop */}
-            <div className="absolute -right-[100vw] top-0 bottom-0 left-0 bg-[#E1F9F1] -z-10 hidden md:block" style={{ left: 'auto', width: '200vw', right: '-50vw' }}></div>
-
-            {/* Left Content */}
-            <div className="w-full md:w-1/2 text-left space-y-6 z-10 py-12 md:py-0">
-              <h2 className="text-4xl md:text-5xl text-dark leading-tight">
-                Meticulously Engineered for Scientific Rigor
-              </h2>
-              <div className="space-y-4 font-sans text-gray-700">
-                <p className="text-lg">
-                  At PeptideSupply, we deliver pharmaceutical-grade research compounds subjected to rigorous multi-stage validation. Every batch is verified via high-performance liquid chromatography (HPLC) and mass spectrometry to ensure absolute molecular integrity.
-                </p>
-                <p className="text-lg">
-                  Our commitment to scientific transparency means you receive consistent, high-purity formulations designed to eliminate variables and deliver reproducible results in the most demanding laboratory environments.
-                </p>
-              </div>
-              <Link href="/shop" className="inline-block pt-4">
-                <Button size="lg" className="bg-secondary hover:bg-secondary-600 text-dark font-semibold px-10 py-4 shadow-md rounded-lg transition-all duration-300 active:scale-95">
-                  Shop Now
-                </Button>
-              </Link>
-            </div>
-
-            {/* Right Image (Circle with Dashed Border) */}
-            <div className="w-full md:w-1/2 flex justify-center md:justify-end py-12 md:py-32 z-10">
-              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full border-4  border-dashed border-gray-300 bg-gray-100 flex items-center justify-center p-2 transition-transform hover:scale-105 duration-500 shadow-sm group overflow-hidden">
+      {/* TRANSFORMATION SECTION - Triangular Overlays */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-dark mb-4">Real Results</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Trusted by researchers worldwide for consistent, verifiable results</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Card 1 - Skewed */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-primary/10 transform -skew-x-6 rounded-lg"></div>
+              <div className="relative h-80 overflow-hidden">
                 <Image
-                  src="/images/peptide-molecules.avif"
-                  alt="Peptide Molecular Structure"
+                  src="/images/ABeforANdAfterImageOfAWomanWHoWasFatAndIsNowInGoodShapeThanksToPeptides.jpg"
+                  alt="Transformation"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <h3 className="text-white font-bold text-xl">Research Backing</h3>
+                  <p className="text-white/80 text-sm">Scientifically formulated</p>
+                </div>
               </div>
             </div>
-
-            {/* Mobile Background Filler */}
-            <div className="md:hidden absolute inset-0 bg-[#E1F9F1] -z-10 -mx-6 px-6"></div>
+            
+            {/* Card 2 - Angled */}
+            <div className="group relative mt-8 md:mt-0">
+              <div className="absolute inset-0 bg-secondary/20 transform skew-x-6 rounded-lg"></div>
+              <div className="relative h-80 overflow-hidden">
+                <Image
+                  src="/images/MS40PacksOfPeptidesStackedUp.jpg"
+                  alt="Bulk Orders"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <h3 className="text-white font-bold text-xl">Wholesale Options</h3>
+                  <p className="text-white/80 text-sm">Bulk pricing available</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Card 3 - Diamond shape container */}
+            <div className="group relative mt-8 md:mt-16">
+              <div className="relative h-80 overflow-hidden clip-path-diamond">
+                <Image
+                  src="/images/twoUnlabledFullPeptideBottlesWithASyringeOnAPinkTable.jpg"
+                  alt="Quality Products"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <h3 className="text-white font-bold text-xl">Premium Quality</h3>
+                  <p className="text-white/80 text-sm">Every batch tested</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 2: Product Carousel Section */}
+      {/* CREATIVE INFO SECTION - Asymmetric Layout */}
+      <section className="py-24 bg-gray-50 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 transform skew-x-12"></div>
+        
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            {/* Asymmetric image stack */}
+            <div className="relative w-full lg:w-1/2 h-[400px]">
+              <div className="absolute top-0 right-8 w-64 h-80 overflow-hidden shadow-2xl transform rotate-6 hover:rotate-0 transition-transform duration-500 z-30">
+                <Image
+                  src="/images/HandsWithPinkGlovesPullingOutPeptideFromItsBottleWithASyringe.jpg"
+                  alt="Lab Quality"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="absolute bottom-0 left-0 w-72 h-56 overflow-hidden shadow-2xl transform -rotate-3 hover:rotate-0 transition-transform duration-500 z-20">
+                <Image
+                  src="/images/HandWearingBlackGlovesWritingInBookAboutPeptideRecords.jpg"
+                  alt="Documentation"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              {/* Decorative element */}
+              <div className="absolute top-1/2 left-1/3 w-16 h-16 bg-primary rounded-full opacity-20 animate-pulse"></div>
+            </div>
+            
+            {/* Content */}
+            <div className="w-full lg:w-1/2 space-y-6">
+              <h2 className="text-4xl font-bold text-dark">Precision in Every Step</h2>
+              <p className="text-gray-600 text-lg leading-relaxed">
+                From synthesis to delivery, our rigorous quality control ensures that every peptide 
+                meets the highest standards. Each batch comes with full documentation and Certificate of Analysis.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-6 pt-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-dark">HPLC Tested</h4>
+                    <p className="text-sm text-gray-500">Every batch verified</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-dark">99%+ Purity</h4>
+                    <p className="text-sm text-gray-500">Guaranteed quality</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-dark">GMP Certified</h4>
+                    <p className="text-sm text-gray-500">Industry standard</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945a8 8 0 005.056 7.056l2.898-2.898a2 2 0 012.787-.665l5.792 2.89a2 2 0 011.789 2.89l-.299 4.272a2 2 0 01-1.992 1.792L21 22H4a2 2 0 01-2-2v-6.18l2.055-2.12a8 8 0 005.056-7.056l-2.898 2.898a2 2 0 00-.787 2.787l.299 4.272a2 2 0 001.792 1.792h4.945a2 2 0 001.945-1.788l2.898-2.898a2 2 0 012.787-.665l5.792 2.89a2 2 0 011.789 2.89l-.299 4.272a2 2 0 01-1.992 1.792L21 22H4a2 2 0 01-2-2V9.055a8 8 0 015.056-7.056z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-dark">Global Shipping</h4>
+                    <p className="text-sm text-gray-500">120+ countries</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Medical Partners */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-6 text-center">
+          <h3 className="text-2xl font-heading font-bold text-dark mb-6">Medical & Research Partners</h3>
+          <div className="mt-4">
+            <LogoLoop
+              logos={medicalLogos}
+              speed={80}
+              direction="left"
+              logoHeight={36}
+              gap={40}
+              fadeOut
+              fadeOutColor="#ffffff"
+              ariaLabel="Medical and research partners"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Rest of sections - Product Carousel, Feature Grid, Testimonials */}
       <section className="relative bg-white overflow-hidden">
-        {/* Top Header with Gray Background Area */}
-        <div className="relative h-[500px] w-full border-b border-gray-200 overflow-hidden">
+        <div className="relative h-[400px] w-full border-b border-gray-200 overflow-hidden">
           <Image
             src="/images/peptide-injections.webp"
             alt="Peptide Injections"
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gray-100/40 flex flex-col items-center justify-center pt-12 px-6 text-center">
+          <div className="absolute inset-0 bg-primary/30 flex flex-col items-center justify-center pt-12 px-6 text-center">
             <div className="container mx-auto">
-
-              <h2 className="text-3xl md:text-5xl text-dark mb-4 drop-shadow-sm">Engineered for Clinical Insight</h2>
-              <div className="w-64 h-1.5 bg-primary/10 rounded-full mx-auto"></div>
+              <h2 className="text-3xl md:text-5xl text-white mb-4 drop-shadow-lg">Engineered for Results</h2>
+              <div className="w-64 h-1.5 bg-white/30 rounded-full mx-auto"></div>
             </div>
           </div>
         </div>
 
-        {/* The White Card overlapping the gray background */}
-        <div className="max-w-7xl mx-auto bg-white p-6 md:p-16 rounded-[40px] shadow-2xl border border-gray-100 mb-20 relative z-10 -mt-32">
+        <div className="max-w-7xl mx-auto bg-white p-6 md:p-16 rounded-[40px] shadow-2xl border border-gray-100 mb-20 relative z-10 -mt-20">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {products.map((product: any) => (
               <ProductCard
@@ -196,57 +377,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Medical Partners LogoLoop Section */}
-      <section className="py-12 bg-white">
-        <div className="text-center">
-          <h3 className="text-2xl font-heading font-bold text-dark mb-6">Medical & Research Partners</h3>
-          <div className="mt-4">
-            <LogoLoop
-              logos={medicalLogos}
-              speed={100}
-              direction="left"
-              logoHeight={40}
-              gap={50}
-              fadeOut
-              fadeOutColor="#ffffff"
-              ariaLabel="Medical and research partners"
-            />
-          </div>
-        </div>
-      </section>
-      {/* SECTION 3: Partner Info & Feature Grid */}
+      {/* Feature Grid */}
       <section className="py-24 md:py-32 bg-white">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center gap-16 mb-40 max-w-6xl mx-auto">
-            {/* sophisticated lab image Placeholder */}
-            <div className="w-full md:w-1/2 flex justify-center md:justify-start -mx-6 md:mx-0">
-              <div className="aspect-square w-full md:max-w-md relative overflow-hidden rounded-none group h-[440px] md:h-auto">
-                <Image
-                  src="/images/sophisticated-lab.png"
-                  alt="Sophisticated Research Laboratory"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className="w-full md:w-1/2 space-y-8">
-              <p className="text-gray-500 text-lg md:text-xl font-sans font-medium tracking-wide">Not Just a Supplier - A Partner in Research</p>
-              <h2 className="text-4xl md:text-6xl text-dark leading-tight">
-                Your Strategic Ally in Molecular Discovery
-              </h2>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-sans max-w-lg">
-                PeptideSupply provides more than just compounds; we offer a foundation for breakthrough science through unwavering integrity and a robust, globally-optimized supply chain.
-              </p>
-              <Link href="/shop" className="inline-block pt-4">
-                <Button className="bg-secondary hover:bg-secondary-600 text-dark font-bold px-12 py-5 shadow-xl rounded-xl transition-all active:scale-95 text-lg">
-                  Shop Now
-                </Button>
-              </Link>
-            </div>
-          </div>
-
           <div className="text-center mb-24 space-y-6">
             <h2 className="text-4xl md:text-6xl text-dark max-w-5xl mx-auto leading-tight italic">Reliable Research Starts from Molecular Precision.</h2>
             <p className="text-2xl md:text-4xl font-heading italic text-dark font-light tracking-wide opacity-90">
@@ -254,7 +387,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Critical Factors Grid */}
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-dark shadow-2xl">
               {[
@@ -275,7 +407,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 4: Testimonials */}
+      {/* Testimonials */}
       <section className="py-24 bg-gray-50 overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -285,7 +417,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Testimonials Carousel */}
           {testimonials.length > 0 ? (
             <div className="testimonials-slider">
               <LogoLoop
