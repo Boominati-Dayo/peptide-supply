@@ -13,9 +13,9 @@ type SeoProps = {
 };
 
 const Seo: React.FC<SeoProps> = ({ title, description, keywords, image, url, article }) => {
-  const defaultTitle = 'PeptideSupply – Premium Research-Grade Peptides';
-  const defaultDescription = 'PeptideSupply offers high-purity, lab-tested peptides for research and professional applications. GMP-compliant manufacturing, HPLC verified purity, worldwide shipping.';
-  const siteUrl = url ?? 'https://peptide-lab-six.vercel.app';
+  const defaultTitle = 'PeptideMint – Premium Research-Grade Peptides';
+  const defaultDescription = 'PeptideMint offers high-purity, lab-tested peptides for research and professional applications. GMP-compliant manufacturing, HPLC verified purity, worldwide shipping.';
+  const siteUrl = url ?? 'https://peptidemint.com';
   const seoTitle = title ?? defaultTitle;
   const seoDescription = description ?? defaultDescription;
   const seoKeywords = keywords ?? 
@@ -25,7 +25,7 @@ const Seo: React.FC<SeoProps> = ({ title, description, keywords, image, url, art
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'PeptideSupply',
+    name: 'PeptideMint',
     url: siteUrl,
     potentialAction: {
       '@type': 'SearchAction',
@@ -37,7 +37,7 @@ const Seo: React.FC<SeoProps> = ({ title, description, keywords, image, url, art
   const organizationJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'PeptideSupply',
+    name: 'PeptideMint',
     url: siteUrl,
     description: 'Premium research-grade peptide supplier',
     sameAs: []
@@ -54,7 +54,7 @@ const Seo: React.FC<SeoProps> = ({ title, description, keywords, image, url, art
       <meta property="og:type" content={article ? 'article' : 'website'} />
       <meta property="og:url" content={siteUrl} />
       <meta property="og:image" content={seoImage} />
-      <meta property="og:site_name" content="PeptideSupply" />
+      <meta property="og:site_name" content="PeptideMint" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seoTitle} />
       <meta name="twitter:description" content={seoDescription} />

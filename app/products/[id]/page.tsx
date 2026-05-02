@@ -181,15 +181,24 @@ export default function ProductDetailPage() {
                     </div>
 
                     <div className="flex gap-4 mb-8">
-                        <div className="w-24">
-                            <label className="sr-only">Quantity</label>
-                            <input
-                                type="number"
-                                value={quantity}
-                                onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                                min={1}
-                                className="w-full px-4 py-3 border rounded-lg text-center"
-                            />
+                        <div className="flex items-center border-2 border-gray-200 rounded-lg overflow-hidden">
+                            <button
+                                type="button"
+                                onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                                className="w-12 h-12 flex items-center justify-center text-gray-600 hover:bg-gray-100 active:bg-gray-200 transition-colors text-xl font-bold"
+                            >
+                                −
+                            </button>
+                            <span className="w-12 h-12 flex items-center justify-center font-bold text-dark">
+                                {quantity}
+                            </span>
+                            <button
+                                type="button"
+                                onClick={() => setQuantity(quantity + 1)}
+                                className="w-12 h-12 flex items-center justify-center text-gray-600 hover:bg-gray-100 active:bg-gray-200 transition-colors text-xl font-bold"
+                            >
+                                +
+                            </button>
                         </div>
                         <Button
                             size="lg"

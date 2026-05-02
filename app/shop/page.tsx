@@ -9,7 +9,22 @@ export default function ShopPage() {
     const [loading, setLoading] = useState(true);
     const [maxPrice, setMaxPrice] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All');
-    const [filtersOpen, setFiltersOpen] = useState(false);
+    const [filtersOpen, setFiltersOpen] = useState(true); // Default: open on desktop
+
+    // On mobile, start with filters closed
+    const [isMobile, setIsMobile] = useState(false);
+    
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+    
+    // Set initial state based on screen size
+    useEffect(() => {
+        setFiltersOpen(!isMobile);
+    }, [isMobile]);
     const [sortBy, setSortBy] = useState('default');
 
     useEffect(() => {

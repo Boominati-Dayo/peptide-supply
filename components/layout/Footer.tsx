@@ -53,12 +53,12 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-primary text-white">
+        <footer className="bg-primary text-white" suppressHydrationWarning>
             <div className="container mx-auto px-4 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
                     {/* Brand Section */}
                     <div className="lg:col-span-2">
-                        <h3 className="text-2xl font-heading mb-4">PeptideSupply</h3>
+                        <h3 className="text-2xl font-heading mb-4">PeptideMint</h3>
                         <p className="text-gray-300 mb-4 leading-relaxed">
                             Clinically tested, GMP manufactured, batch-specific COAs — delivering
                             premium peptides for clinics, athletes, and health innovators.
@@ -146,11 +146,11 @@ export default function Footer() {
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Enter your email"
                                 required
-                                className="flex-1 px-4 py-2 rounded-lg bg-white text-dark focus:outline-none focus:ring-2 focus:ring-accent disabled:opacity-50 min-w-0"
+                                className="flex-1 px-4 py-2 rounded-lg bg-white text-dark focus:outline-none focus:ring-2 focus:ring-mint-400 border border-mint-100 disabled:opacity-50 min-w-0"
                             />
                             <button
                                 type="submit"
-                                className="px-6 py-2 bg-accent text-dark font-semibold rounded-lg hover:bg-accent-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                                className="px-6 py-2 bg-mint-400 text-dark font-semibold rounded-lg hover:bg-mint-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                             >
                                 {subscribeStatus === 'loading' ? 'Subscribing...' : 'Subscribe'}
                             </button>
@@ -165,7 +165,7 @@ export default function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="mt-8 pt-8 border-t border-primary-400 text-center text-gray-300 text-sm">
-                    <p>© {new Date().getFullYear()} PeptideSupply | All Rights Reserved.</p>
+                    <p>© {new Date().getFullYear()} PeptideMint | All Rights Reserved.</p>
                 </div>
             </div>
         </footer>

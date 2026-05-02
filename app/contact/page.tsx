@@ -74,7 +74,7 @@ export default function ContactPage() {
                                             </svg>
                                             <div>
                                                 <h3 className="font-semibold text-lg">Email</h3>
-                                                <p className="text-blue-100">support@peptidelab.com</p>
+                                                <p className="text-blue-100">support@peptidemint.com</p>
                                             </div>
                                         </div>
 
@@ -92,7 +92,7 @@ export default function ContactPage() {
 
                                 <div className="mt-12">
                                     <p className="text-sm text-blue-200">
-                                        © 2026 PeptideSupply. Made for Advanced Research.
+                                        © 2026 PeptideMint. Made for Advanced Research.
                                     </p>
                                 </div>
                             </div>

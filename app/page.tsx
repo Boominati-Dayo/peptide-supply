@@ -64,8 +64,8 @@ export default function Home() {
   return (
     <div className="bg-white scroll-smooth overflow-x-hidden">
       <Seo 
-        title="PeptideSupply – Premium Research-Grade Peptides | GMP Certified"
-        description="PeptideSupply offers high-purity, lab-tested peptides for research and professional applications. GMP-compliant manufacturing, HPLC verified purity, worldwide shipping."
+        title="PeptideMint – Premium Research-Grade Peptides | GMP Certified"
+        description="PeptideMint offers high-purity, lab-tested peptides for research and professional applications. GMP-compliant manufacturing, HPLC verified purity, worldwide shipping."
         keywords="peptides, peptide synthesis, research peptides, RUO peptides, GMP peptides, laboratory peptides, peptide purity, peptide suppliers, biotech peptides, custom peptide synthesis, peptide manufacturing"
       />
       
@@ -80,11 +80,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Content */}
             <div className="space-y-8">
-              <div className="inline-block">
-                <span className="px-4 py-2 bg-primary text-white text-sm font-bold rounded-full shadow-lg">
-                  🔬 Research Grade
-                </span>
-              </div>
+              
               <h1 className="text-5xl md:text-6xl lg:text-7xl text-dark font-bold leading-tight">
                 Purity in <span className="text-primary">Every</span> Molecule
               </h1>
@@ -198,7 +194,7 @@ export default function Home() {
             </div>
             
             {/* Card 2 - Angled */}
-            <div className="group relative mt-8 md:mt-0">
+            <div className="group relative">
               <div className="absolute inset-0 bg-secondary/20 transform skew-x-6 rounded-lg"></div>
               <div className="relative h-80 overflow-hidden">
                 <Image
@@ -215,9 +211,10 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Card 3 - Diamond shape container */}
-            <div className="group relative mt-8 md:mt-16">
-              <div className="relative h-80 overflow-hidden clip-path-diamond">
+            {/* Card 3 - Skewed */}
+            <div className="group relative">
+              <div className="absolute inset-0 bg-accent/30 transform -skew-x-3 rounded-lg"></div>
+              <div className="relative h-80 overflow-hidden rounded-lg">
                 <Image
                   src="/images/twoUnlabledFullPeptideBottlesWithASyringeOnAPinkTable.jpg"
                   alt="Quality Products"

@@ -73,9 +73,9 @@ export default function Navbar() {
     if (pathname && (pathname.startsWith('/admin') || pathname === '/admin-login')) return null;
 
     return (
-        <nav className="bg-white shadow-md sticky top-0 z-50">
+        <nav className="bg-white shadow-md sticky top-0 z-50" suppressHydrationWarning>
             {/* Top Bar */}
-            <div className="bg-primary text-white py-2">
+            <div className="bg-gradient-to-r from-primary via-primary to-mint-500 text-white py-2">
                 <div className="container mx-auto px-4">
                     <p className="text-sm text-center font-sans tracking-wide">
                         Lab-Tested • Research-Backed • Made for Advanced Research
@@ -106,7 +106,7 @@ export default function Navbar() {
                     {/* CENTER: Logo (Desktop Only: Absolute Centered) */}
                     <Link href="/" className="lg:absolute lg:left-1/2 lg:-translate-x-1/2 flex items-center">
                         <div className="text-3xl md:text-4xl font-heading text-primary whitespace-nowrap">
-                            PeptideSupply
+                            PeptideMint
                         </div>
                     </Link>
 

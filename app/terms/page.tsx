@@ -7,14 +7,14 @@ export default function TermsPage() {
             <div className="prose prose-blue max-w-none text-gray-600 space-y-10">
                 <section>
                     <p className="text-lg leading-relaxed">
-                        Welcome to <span className="font-bold text-dark">PeptideSupply</span>. By accessing or using our website, you agree to comply with and be bound by the following Terms and Conditions. Please read them carefully before using our site.
+                        Welcome to <span className="font-bold text-dark">PeptideMint</span>. By accessing or using our website, you agree to comply with and be bound by the following Terms and Conditions. Please read them carefully before using our site.
                     </p>
                 </section>
 
                 <section>
                     <h2 className="text-2xl font-bold text-dark mb-4">1. General Information</h2>
                     <p>
-                        PeptideSupply operates as a supplier of high-quality research peptides intended strictly for laboratory and research purposes only. <span className="font-bold text-red-600 underline">All products sold are not for human consumption or medical use.</span> By purchasing from us, you confirm that you understand and agree to these restrictions.
+                        PeptideMint operates as a supplier of high-quality research peptides intended strictly for laboratory and research purposes only. <span className="font-bold text-red-600 underline">All products sold are not for human consumption or medical use.</span> By purchasing from us, you confirm that you understand and agree to these restrictions.
                     </p>
                 </section>
 
@@ -28,10 +28,10 @@ export default function TermsPage() {
                 <section>
                     <h2 className="text-2xl font-bold text-dark mb-4">3. Product Use Disclaimer</h2>
                     <p className="mb-4">
-                        All products available on PeptideSupply are for research purposes only. They are not intended to diagnose, treat, cure, or prevent any disease. Any improper use, testing, or redistribution of our products violates our policies and applicable laws.
+                        All products available on PeptideMint are for research purposes only. They are not intended to diagnose, treat, cure, or prevent any disease. Any improper use, testing, or redistribution of our products violates our policies and applicable laws.
                     </p>
                     <p className="mb-4">
-                        PeptideSupply assumes no responsibility for misuse of any products sold. The buyer is solely responsible for ensuring proper handling, storage, and disposal according to scientific and safety standards.
+                        PeptideMint assumes no responsibility for misuse of any products sold. The buyer is solely responsible for ensuring proper handling, storage, and disposal according to scientific and safety standards.
                     </p>
                 </section>
 
@@ -48,7 +48,7 @@ export default function TermsPage() {
                 <section>
                     <h2 className="text-2xl font-bold text-dark mb-4">5. Shipping and Delivery</h2>
                     <p>
-                        Orders are processed promptly and shipped to the address provided at checkout from our secure distribution hubs. Delivery times may vary based on destination and courier service. PeptideSupply is not responsible for delays caused by customs, carrier issues, or incorrect address details.
+                        Orders are processed promptly and shipped to the address provided at checkout from our secure distribution hubs. Delivery times may vary based on destination and courier service. PeptideMint is not responsible for delays caused by customs, carrier issues, or incorrect address details.
                     </p>
                 </section>
 
@@ -62,28 +62,28 @@ export default function TermsPage() {
                 <section>
                     <h2 className="text-2xl font-bold text-dark mb-4">7. Limitation of Liability</h2>
                     <p>
-                        Under no circumstances shall PeptideSupply, its employees, affiliates, or suppliers be liable for any direct, indirect, incidental, or consequential damages arising from the use of our website or products.
+                        Under no circumstances shall PeptideMint, its employees, affiliates, or suppliers be liable for any direct, indirect, incidental, or consequential damages arising from the use of our website or products.
                     </p>
                 </section>
 
                 <section>
                     <h2 className="text-2xl font-bold text-dark mb-4">8. Intellectual Property</h2>
                     <p>
-                        All website content, including text, images, logos, product descriptions, and designs, is the intellectual property of PeptideSupply and may not be copied, modified, or distributed without written permission.
+                        All website content, including text, images, logos, product descriptions, and designs, is the intellectual property of PeptideMint and may not be copied, modified, or distributed without written permission.
                     </p>
                 </section>
 
                 <section>
                     <h2 className="text-2xl font-bold text-dark mb-4">9. Governing Law</h2>
                     <p>
-                        These Terms and Conditions are governed by and construed under international commerce guidelines and standard business laws. Any disputes arising from these terms will be handled exclusively in the jurisdiction of PeptideSupply's administrative headquarters.
+                        These Terms and Conditions are governed by and construed under international commerce guidelines and standard business laws. Any disputes arising from these terms will be handled exclusively in the jurisdiction of PeptideMint's administrative headquarters.
                     </p>
                 </section>
 
                 <section>
                     <h2 className="text-2xl font-bold text-dark mb-4">10. Changes to These Terms</h2>
                     <p>
-                        PeptideSupply reserves the right to update or modify these Terms & Conditions at any time without prior notice. Continued use of the website after such updates constitutes acceptance of the revised terms.
+                        PeptideMint reserves the right to update or modify these Terms & Conditions at any time without prior notice. Continued use of the website after such updates constitutes acceptance of the revised terms.
                     </p>
                 </section>
 

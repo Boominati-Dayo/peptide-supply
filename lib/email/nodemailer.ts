@@ -21,7 +21,7 @@ function getEmailTemplate(content: string): string {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>PeptideSupply</title>
+      <title>PeptideMint</title>
       <style>
         body {
           margin: 0;
@@ -81,14 +81,14 @@ function getEmailTemplate(content: string): string {
     <body>
       <div class="container">
         <div class="header">
-          <h1 class="logo">PeptideSupply</h1>
+          <h1 class="logo">PeptideMint</h1>
           <p class="tagline">Precision Peptides for Advanced Research</p>
         </div>
         <div class="content">
           ${content}
         </div>
         <div class="footer">
-          <p>© ${new Date().getFullYear()} PeptideSupply. All rights reserved.</p>
+          <p>© ${new Date().getFullYear()} PeptideMint. All rights reserved.</p>
           <p>
             <a href="#">Unsubscribe</a> | 
             <a href="#">Privacy Policy</a> | 
@@ -115,7 +115,7 @@ export async function sendEmail({
 }) {
   try {
     const info = await transporter.sendMail({
-      from: `"PeptideSupply" <${process.env.SMTP_FROM}>`,
+      from: `"PeptideMint" <${process.env.SMTP_FROM}>`,
       to,
       subject,
       html: getEmailTemplate(html),
@@ -220,7 +220,7 @@ export const emailTemplates = {
       <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; white-space: pre-wrap;">
         ${message}
       </div>
-      <p>Best regards,<br>The PeptideSupply Team</p>
+      <p>Best regards,<br>The PeptideMint Team</p>
     `,
   }),
 
@@ -229,7 +229,7 @@ export const emailTemplates = {
     subject: 'Response to Your Inquiry',
     html: `
       <h2>Hello ${name},</h2>
-      <p>Thank you for contacting PeptideSupply. Here's our response to your inquiry:</p>
+      <p>Thank you for contacting PeptideMint. Here's our response to your inquiry:</p>
       <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
         ${message}
       </div>
@@ -239,9 +239,9 @@ export const emailTemplates = {
 
   // Newsletter subscription confirmation
   newsletterSubscription: (email: string) => ({
-    subject: 'Welcome to PeptideSupply Newsletter!',
+    subject: 'Welcome to PeptideMint Newsletter!',
     html: `
-      <h2>Welcome to PeptideSupply!</h2>
+      <h2>Welcome to PeptideMint!</h2>
       <p>Thank you for subscribing to our newsletter. Your email <strong>${email}</strong> has been successfully added to our mailing list.</p>
       <h3>What You'll Receive:</h3>
       <ul>
@@ -250,8 +250,8 @@ export const emailTemplates = {
         <li>Latest updates in peptide science</li>
         <li>Research insights and educational content</li>
       </ul>
-      <p>Stay tuned for exciting updates from PeptideSupply!</p>
-      <p>Best regards,<br>The PeptideSupply Team</p>
+      <p>Stay tuned for exciting updates from PeptideMint!</p>
+      <p>Best regards,<br>The PeptideMint Team</p>
     `,
   }),
 };

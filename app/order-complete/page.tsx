@@ -53,7 +53,7 @@ function OrderCompleteContent() {
                         <div className="flex justify-between items-start">
                             <div>
                                 <h2 className="text-2xl font-bold">INVOICE</h2>
-                                <p className="text-blue-200 mt-1">PeptideSupply</p>
+                                <p className="text-blue-200 mt-1">PeptideMint</p>
                             </div>
                             <div className="text-right">
                                 <p className="text-lg font-bold">#{orderNumber || '000000'}</p>

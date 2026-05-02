@@ -4,7 +4,7 @@
   --font-sans: 'Montserrat', sans-serif;
   --font-heading: 'EB Garamond', serif;
 
-  /* PeptideSupply Brand Colors - Pink Theme */
+  /* PeptideMint Brand Colors - Pink Theme */
   --color-primary: #d9046d;
   --color-primary-50: #fce4ec;
   --color-primary-100: #f8bbd0;
@@ -38,6 +38,17 @@
   --color-accent-500: #ff90c8;
   --color-accent-600: #ff5c8d;
   --color-accent-700: #ff3772;
+
+  /* Mint accent - subtle #68D094 */
+  --color-mint: #68D094;
+  --color-mint-50: #e8f7ef;
+  --color-mint-100: #d0f0de;
+  --color-mint-200: #a8e2be;
+  --color-mint-300: #80d49e;
+  --color-mint-400: #68D094;
+  --color-mint-500: #48b87a;
+  --color-mint-600: #389e61;
+  --color-mint-700: #288447;
   --color-accent-800: #ff1457;
   --color-accent-900: #d9003b;
 
@@ -92,9 +103,29 @@
     }
   }
 
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(5deg);
+    }
+  }
+
+  @keyframes float-delayed {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(-5deg);
+    }
+  }
+
   --animate-fade-in: fade-in 0.5s ease-in-out;
   --animate-slide-up: slide-up 0.4s ease-out;
   --animate-slide-down: slide-down 0.4s ease-out;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float-delayed 8s ease-in-out infinite;
 }
 
 /* Custom Utilities */
@@ -121,6 +152,14 @@
 
   .card {
     @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float-delayed 8s ease-in-out infinite;
   }
 }
 
