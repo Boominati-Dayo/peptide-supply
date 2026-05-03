@@ -82,6 +82,15 @@ export default function ShopPage() {
     const startIndex = (currentPage - 1) * productsPerPage;
     const paginatedProducts = filteredProducts.slice(startIndex, startIndex + productsPerPage);
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const handlePageChange = (page: number) => {
+        setCurrentPage(page);
+        scrollToTop();
+    };
+
     const getPageNumbers = () => {
         const pages: (number | string)[] = [];
         const maxVisible = isMobile ? 3 : 5;
@@ -282,7 +291,7 @@ export default function ShopPage() {
                     {totalPages > 1 && (
                         <div className="mt-12 flex justify-center items-center gap-2">
                             <button
-                                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                                onClick={() => { setCurrentPage(p => Math.max(1, p - 1)); scrollToTop(); }}
                                 disabled={currentPage === 1}
                                 className="px-4 py-2 border rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium"
                             >
@@ -293,7 +302,7 @@ export default function ShopPage() {
                                 typeof page === 'number' ? (
                                     <button
                                         key={index}
-                                        onClick={() => setCurrentPage(page)}
+                                        onClick={() => handlePageChange(page)}
                                         className={`px-4 py-2 rounded-lg text-sm font-medium ${
                                             currentPage === page
                                                 ? 'bg-primary text-white'
@@ -308,7 +317,7 @@ export default function ShopPage() {
                             ))}
 
                             <button
-                                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                                onClick={() => { setCurrentPage(p => Math.min(totalPages, p + 1)); scrollToTop(); }}
                                 disabled={currentPage === totalPages}
                                 className="px-4 py-2 border rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium"
                             >
