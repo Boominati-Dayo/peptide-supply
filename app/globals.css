@@ -161,6 +161,19 @@
   .animate-float-delayed {
     animation: float-delayed 8s ease-in-out infinite;
   }
+
+  .animate-bounce-slow {
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
 }
 
 /* Base Styles */

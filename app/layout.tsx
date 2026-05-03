@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ToasterProvider from "@/components/providers/ToasterProvider";
 import CookieConsent from "@/components/CookieConsent";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 
 export const metadata: Metadata = {
@@ -69,6 +70,7 @@ export default function RootLayout({
       <body suppressHydrationWarning={true}>
         <ToasterProvider />
         <CookieConsent />
+        <WhatsAppButton />
         <Navbar />
         <main className="min-h-screen">
           {children}
