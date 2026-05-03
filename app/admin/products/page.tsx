@@ -3,25 +3,53 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 
 export default function AdminProductsPage() {
     const [products, setProducts] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+    const [deleteId, setDeleteId] = useState<string | null>(null);
+
+    const fetchProducts = async () => {
+        try {
+            const res = await fetch('/api/products');
+            const data = await res.json();
+            setProducts(data.success ? data.data : []);
+        } catch (error) {
+            console.error('Error fetching products:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const res = await fetch('/api/products');
-                const data = await res.json();
-                setProducts(data.success ? data.data : []);
-            } catch (error) {
-                console.error('Error fetching products:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
         fetchProducts();
     }, []);
+
+    const handleDelete = async (id: string) => {
+        if (!confirm('Are you sure you want to delete this product? This action cannot be undone.')) {
+            return;
+        }
+        
+        setDeleteId(id);
+        try {
+            const res = await fetch(`/api/products/${id}`, {
+                method: 'DELETE',
+            });
+            
+            if (res.ok) {
+                toast.success('Product deleted successfully');
+                setProducts(products.filter(p => p._id !== id));
+            } else {
+                throw new Error('Failed to delete');
+            }
+        } catch (error) {
+            console.error('Error deleting product:', error);
+            toast.error('Failed to delete product');
+        } finally {
+            setDeleteId(null);
+        }
+    };
 
     if (loading) {
         return (
@@ -88,7 +116,16 @@ export default function AdminProductsPage() {
                                             {product.stock}
                                         </td>
                                         <td className="px-3 md:px-6 py-3 md:py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <Link href={`/admin/products/${product._id}`} className="text-primary hover:text-primary-600">Edit</Link>
+                                            <div className="flex items-center justify-end gap-3">
+                                                <Link href={`/admin/products/${product._id}`} className="text-primary hover:text-primary-600">Edit</Link>
+                                                <button
+                                                    onClick={() => handleDelete(product._id)}
+                                                    disabled={deleteId === product._id}
+                                                    className="text-red-600 hover:text-red-800 disabled:opacity-50"
+                                                >
+                                                    {deleteId === product._id ? 'Deleting...' : 'Delete'}
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                 ))
