@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 export default function WhatsAppButton() {
     const phoneNumber = '+19014317111';
     const message = '👋 Hi PeptideMint! I\'m interested in your research-grade peptides. Could you please help me with information on product availability, bulk pricing, or shipping times?';
@@ -10,18 +12,16 @@ export default function WhatsAppButton() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-6 right-6 z-40 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-[#20BD5A] hover:scale-110 transition-all duration-300 animate-bounce-slow"
+            className="fixed bottom-[90px] right-6 z-40 p-3 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 animate-bounce-slow"
             aria-label="Chat on WhatsApp"
         >
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="28"
-                height="28"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-            >
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.174-.119.381-.297.571-.447.14-.116.357-.296.536-.446.321-.263.734-.477.995-.607.261-.13.457-.108.626.058.194.193.832.667 1.012 1.195.179.528.179.987-.012 1.383-.174.358-.488 1.016-.667 1.218-.179.201-.372.277-.512.341-.14.064-.297.099-.425.099-.149 0-.492-.074-.748-.372-.256-.297-1.04-1.015-1.04-2.176 0-1.166.894-2.652 1.085-2.835.191-.183 2.523-2.426 2.523-2.426a.937.937 0 0 1 .683-.5c.372-.074.716-.099.998-.049.381.019 1.889.185 2.777 1.338.765.993 1.51 2.165 1.51 2.983 0 1.043-.867 2.043-1.085 2.185l-.001.001zM12.072 20.034c-1.151.462-2.695-.134-3.59-1.137-.912-1.017-1.444-2.453-1.273-3.775.172-1.322.989-2.578 2.123-3.477 1.134-.899 2.529-1.218 3.834-.839.377.109.694.283.988.514.078.062.173.125.246.191.07.065.14.131.21.2.211.202.435.41.565.699.13.288.13.6-.006.884-.195.404-.565 1.037-1.027 1.588-.233.277-.507.544-.777.783-.27.24-.555.483-.752.793-.197.31-.342.583-.342.916 0 .333.185.583.419.814.235.231.537.475.806.724.27.249.565.493.835.748.27.255.552.492.878.617.326.125.697.184 1.117.102.42-.082.894-.353 1.137-.797.243-.444.298-.967.177-1.479l-.019-.082z"/>
-            </svg>
+            <Image
+                src="/images/WhatsApp.svg"
+                alt="WhatsApp"
+                width={44}
+                height={44}
+                className="w-11 h-11"
+            />
         </a>
     );
 }
