@@ -58,7 +58,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
                     {/* Brand Section */}
                     <div className="lg:col-span-2">
-                        <h3 className="text-2xl font-heading mb-4"><span className="text-primary">Peptide</span><span className="text-mint-500">Mint</span></h3>
+                        <h3 className="text-2xl font-heading mb-4"><span className="text-white">Peptide</span><span className="text-mint-400">Mint</span></h3>
                         <p className="text-gray-300 mb-4 leading-relaxed">
                             Clinically tested, GMP manufactured, batch-specific COAs — delivering
                             premium peptides for clinics, athletes, and health innovators.
