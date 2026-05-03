@@ -5,6 +5,7 @@ import ImageCarousel from '@/components/ui/ImageCarousel';
 import Button from '@/components/ui/Button';
 import Breadcrumb from '@/components/ui/Breadcrumb';
 import ProductCard from '@/components/ui/Card';
+import Seo from '@/components/Seo';
 import { useCartStore } from '@/lib/store/cart';
 import toast from 'react-hot-toast';
 import { useParams } from 'next/navigation';
@@ -16,6 +17,37 @@ export default function ProductDetailPage() {
     const [product, setProduct] = useState<any>(null);
     const [relatedProducts, setRelatedProducts] = useState<any[]>([]);
     const { addItem } = useCartStore();
+
+    // Dynamic SEO tags when product loads
+    useEffect(() => {
+        if (product) {
+            const productImage = product.images?.[0] || '/thumbnail.png';
+            
+            // Update document meta tags
+            document.title = `${product.name} | PeptideMint`;
+            
+            // Update OG tags
+            const ogImage = document.querySelector('meta[property="og:image"]');
+            if (ogImage) ogImage.setAttribute('content', productImage);
+            
+            const ogTitle = document.querySelector('meta[property="og:title"]');
+            if (ogTitle) ogTitle.setAttribute('content', `${product.name} | PeptideMint`);
+            
+            const ogDesc = document.querySelector('meta[property="og:description"]');
+            if (ogDesc) ogDesc.setAttribute('content', product.description?.slice(0, 160) || 'Shop high-quality peptides at PeptideMint');
+            
+            // Update Twitter tags
+            const twitterImage = document.querySelector('meta[name="twitter:image"]');
+            if (twitterImage) twitterImage.setAttribute('content', productImage);
+            
+            // Update canonical URL
+            const canonical = document.querySelector('link[rel="canonical"]');
+            if (canonical) canonical.setAttribute('href', `https://peptidemint.com/products/${product._id}`);
+        }
+    }, [product]);
+
+    const productImage = product?.images?.[0] || '/thumbnail.png';
+    const productDescription = product?.description?.slice(0, 160) || 'Shop high-quality peptides at PeptideMint';
 
     // Fetch product data
     useEffect(() => {
@@ -87,6 +119,12 @@ export default function ProductDetailPage() {
 
     return (
         <div className="container mx-auto px-4 py-8">
+            <Seo 
+                title={`${product.name} | PeptideMint`}
+                description={productDescription}
+                image={productImage}
+                url={`https://peptidemint.com/products/${product._id}`}
+            />
             {/* Breadcrumb */}
             <Breadcrumb
                 items={[
