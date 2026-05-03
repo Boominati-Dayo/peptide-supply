@@ -212,26 +212,27 @@ export default function ProductDetailPage() {
                 </div>
             </div>
 
-            {/* Related Products */}
+            {/* Related Products - Horizontal Scroll */}
             {relatedProducts.length > 0 && (
                 <div className="mt-16">
                     <h2 className="text-3xl font-heading font-bold text-dark mb-8">Related Products</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory -mx-4 px-4">
                         {relatedProducts.map((relatedProduct: any) => (
-                            <ProductCard
-                                key={relatedProduct._id}
-                                id={relatedProduct._id}
-                                name={relatedProduct.name}
-                                price={relatedProduct.price}
-                                image={relatedProduct.images?.[0] || '/images/placeholder-product.jpg'}
-                                category={relatedProduct.category}
-                                inStock={!relatedProduct.soldout_status}
-                                purity={relatedProduct.purity}
-                                sku={relatedProduct.sku}
-                                content={relatedProduct.content}
-                                size={relatedProduct.size}
-                                form={relatedProduct.form}
-                            />
+                            <div key={relatedProduct._id} className="flex-shrink-0 w-72 snap-start">
+                                <ProductCard
+                                    id={relatedProduct._id}
+                                    name={relatedProduct.name}
+                                    price={relatedProduct.price}
+                                    image={relatedProduct.images?.[0] || '/images/placeholder-product.jpg'}
+                                    category={relatedProduct.category}
+                                    inStock={!relatedProduct.soldout_status}
+                                    purity={relatedProduct.purity}
+                                    sku={relatedProduct.sku}
+                                    content={relatedProduct.content}
+                                    size={relatedProduct.size}
+                                    form={relatedProduct.form}
+                                />
+                            </div>
                         ))}
                     </div>
                 </div>
