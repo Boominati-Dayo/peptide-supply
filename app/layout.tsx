@@ -8,7 +8,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://peptidemint.com"),
+  metadataBase: new URL("https://peptide-supply-lime.vercel.app"),
 
   title: "PeptideMint — Premium Peptides for Sale",
   description:
@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     title: "PeptideMint — Premium Peptides for Sale",
     description:
       "High-quality peptides for sale. Secure checkout, trusted formulations, and fast delivery.",
-    url: "https://peptidemint.com",
+    url: "https://peptide-supply-lime.vercel.app",
     siteName: "PeptideMint",
     images: [
       {
-        url: "/thumbnail.png",
+        url: "https://peptide-supply-lime.vercel.app/thumbnail.png",
         width: 1200,
         height: 630,
         alt: "PeptideMint — Premium Peptides for Sale",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: "PeptideMint — Premium Peptides for Sale",
     description:
       "Buy premium peptides online. Trusted quality, fast delivery.",
-    images: ["/thumbnail.png"],
+    images: ["https://peptide-supply-lime.vercel.app/thumbnail.png"],
   },
 };
 

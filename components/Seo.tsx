@@ -15,12 +15,12 @@ type SeoProps = {
 const Seo: React.FC<SeoProps> = ({ title, description, keywords, image, url, article }) => {
   const defaultTitle = 'PeptideMint – Premium Research-Grade Peptides';
   const defaultDescription = 'PeptideMint offers high-purity, lab-tested peptides for research and professional applications. GMP-compliant manufacturing, HPLC verified purity, worldwide shipping.';
-  const siteUrl = url ?? 'https://peptidemint.com';
+  const siteUrl = url ?? 'https://peptide-supply-lime.vercel.app';
   const seoTitle = title ?? defaultTitle;
   const seoDescription = description ?? defaultDescription;
   const seoKeywords = keywords ?? 
     'peptides, peptide synthesis, research peptides, RUO peptides, GMP peptides, laboratory peptides, peptide purity, peptide suppliers, biotech peptides, custom peptide synthesis, peptide manufacturing, peptide vendor, research grade peptides, peptide solutions, peptide testing, HPLC peptide, mass spectrometry peptides, peptide stability, peptide storage, peptide catalog, peptide wholesaler, peptide distributor';
-  const seoImage = image ?? '/thumbnail.png';
+  const seoImage = image?.startsWith('http') ? image : `https://peptide-supply-lime.vercel.app${image || '/thumbnail.png'}`;
 
   const jsonLd = {
     '@context': 'https://schema.org',
