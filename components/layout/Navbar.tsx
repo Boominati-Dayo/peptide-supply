@@ -219,10 +219,22 @@ export default function Navbar() {
                             </Link>
                         </div>
 
+                        {/* Mobile Search Button - Visible on Mobile Only */}
+                        <button
+                            type="button"
+                            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                            onClick={() => router.push('/shop')}
+                            aria-label="Search products"
+                        >
+                            <svg className="w-6 h-6 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+
                         {/* Mobile Menu Button - Visible on Mobile Only */}
                         <button
                             type="button"
-                            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors ml-4"
+                            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             aria-label="Toggle menu"
                         >
