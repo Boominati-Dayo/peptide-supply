@@ -90,6 +90,9 @@ function getEmailTemplate(content: string): string {
         <div class="footer">
           <p>© ${new Date().getFullYear()} PeptideMint. All rights reserved.</p>
           <p>
+            <a href="https://wa.me/19014317111?text=Hi%20PeptideMint!%20I%27m%20interested%20in%20your%20research-grade%20peptides." target="_blank" style="color: #68D094; text-decoration: none;">💬 Chat on WhatsApp</a>
+          </p>
+          <p>
             <a href="#">Unsubscribe</a> | 
             <a href="#">Privacy Policy</a> | 
             <a href="#">Contact Us</a>
