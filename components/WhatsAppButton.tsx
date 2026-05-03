@@ -2,7 +2,7 @@
 
 export default function WhatsAppButton() {
     const phoneNumber = '+19014317111';
-    const message = 'Hi PeptideMint! I have a question about your products.';
+    const message = '👋 Hi PeptideMint! I\'m interested in your research-grade peptides. Could you please help me with information on product availability, bulk pricing, or shipping times?';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
     return (
