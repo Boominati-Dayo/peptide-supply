@@ -187,8 +187,19 @@
 
 /* Base Styles */
 @layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
   body {
     @apply font-sans text-dark bg-white antialiased;
+    min-height: 100vh;
+  }
+  
+  #__next {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
   h1,

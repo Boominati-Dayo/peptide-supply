@@ -67,12 +67,12 @@ export default function RootLayout({
           })(document);
         ` }} />
       </head>
-      <body suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true} className="flex flex-col min-h-screen">
         <ToasterProvider />
         <CookieConsent />
         <WhatsAppButton />
         <Navbar />
-        <main className="min-h-screen">
+        <main className="flex-1">
           {children}
         </main>
         <Footer />
