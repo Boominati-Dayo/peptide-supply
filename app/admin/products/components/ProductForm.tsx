@@ -14,7 +14,10 @@ import toast from 'react-hot-toast';
 const productSchema = z.object({
     name: z.string().min(2, 'Name is required'),
     price: z.number().min(0, 'Price must be positive'),
-    category: z.string().min(1, 'Category is required'),
+    category: z.string().min(1, 'Category is required').refine(
+        (val) => val !== '__new__',
+        { message: 'Please enter a new category name' }
+    ),
     description: z.string().min(10, 'Description is required'),
     stock: z.number().int().min(0, 'Stock must be 0 or more'),
     sku: z.string().optional(),
@@ -39,6 +42,8 @@ export default function ProductForm({ initialData, isEdit = false }: ProductForm
     const [previewUrls, setPreviewUrls] = useState<string[]>(initialData?.images || []);
     const [imagesToRemove, setImagesToRemove] = useState<string[]>([]);
     const [categories, setCategories] = useState<any[]>([]);
+    const [showNewCategory, setShowNewCategory] = useState(false);
+    const [newCategoryName, setNewCategoryName] = useState('');
 
     const {
         register,
@@ -104,6 +109,33 @@ export default function ProductForm({ initialData, isEdit = false }: ProductForm
     const onSubmit = async (data: ProductFormData) => {
         setIsSubmitting(true);
         try {
+            // Handle new category
+            let finalCategory = data.category;
+            if (showNewCategory && newCategoryName.trim()) {
+                try {
+                    const catRes = await fetch('/api/categories', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            name: newCategoryName.trim(), 
+                            description: `Auto-created category for ${newCategoryName.trim()}` 
+                        }),
+                    });
+                    
+                    if (catRes.ok) {
+                        const newCat = await catRes.json();
+                        finalCategory = newCat.name;
+                        // Refresh categories list
+                        const catRefreshRes = await fetch('/api/categories');
+                        const catData = await catRefreshRes.json();
+                        setCategories(catData);
+                    }
+                } catch (catError) {
+                    console.error('Error creating category:', catError);
+                    // Continue with the category name as-is
+                }
+            }
+
             // Upload all new images
             const uploadedUrls: string[] = [];
 
@@ -144,6 +176,7 @@ export default function ProductForm({ initialData, isEdit = false }: ProductForm
 
             const payload = {
                 ...data,
+                category: finalCategory,
                 images: finalImages,
                 slug,
             };
@@ -225,14 +258,34 @@ export default function ProductForm({ initialData, isEdit = false }: ProductForm
                                 <select
                                     {...register('category')}
                                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary bg-white"
+                                    onChange={(e) => {
+                                        const val = e.target.value;
+                                        setValue('category', val);
+                                        setShowNewCategory(val === '__new__');
+                                        if (val !== '__new__') setNewCategoryName('');
+                                    }}
                                 >
                                     <option value="">Select Category</option>
                                     {categories.map((cat) => (
                                         <option key={cat._id} value={cat.name}>{cat.name}</option>
                                     ))}
+                                    <option value="__new__">+ Add New Category</option>
                                 </select>
                                 {errors.category && <p className="mt-1 text-sm text-error">{errors.category.message}</p>}
                             </div>
+                            
+                            {showNewCategory && (
+                                <div className="mt-4">
+                                    <label className="block text-sm font-medium text-dark mb-2">New Category Name</label>
+                                    <input
+                                        type="text"
+                                        value={newCategoryName}
+                                        onChange={(e) => setNewCategoryName(e.target.value)}
+                                        placeholder="Enter new category name"
+                                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary"
+                                    />
+                                </div>
+                            )}
                         </div>
                     </div>
 
