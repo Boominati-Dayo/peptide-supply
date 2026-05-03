@@ -112,35 +112,34 @@ export default function Navbar() {
 
                     {/* RIGHT: Search, Account, Cart (Desktop) / Mobile Toggle */}
                     <div className="flex items-center justify-end space-x-2 md:space-x-4 flex-1">
-                        {/* Icons - Hidden on Mobile, Visible on Desktop */}
-                        <div className="hidden lg:flex items-center space-x-4">
-                            <div className="relative" ref={searchRef}>
-                                <button
-                                    className={`p-2 hover:bg-gray-100 rounded-full transition-colors ${searchOpen ? 'text-primary bg-gray-50' : 'text-dark'}`}
-                                    aria-label="Search"
-                                    onClick={() => setSearchOpen(!searchOpen)}
-                                    type="button"
-                                >
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                    </svg>
-                                </button>
+                        {/* Search - Visible on both Mobile and Desktop */}
+                        <div className="relative" ref={searchRef}>
+                            <button
+                                className={`p-2 hover:bg-gray-100 rounded-full transition-colors ${searchOpen ? 'text-primary bg-gray-50' : 'text-dark'}`}
+                                aria-label="Search"
+                                onClick={() => setSearchOpen(!searchOpen)}
+                                type="button"
+                            >
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </button>
 
-                                {/* FLOATING SEARCH OVERLAY */}
-                                {searchOpen && (
-                                    <div className="absolute right-0 top-full mt-4 w-96 bg-white shadow-2xl rounded-2xl border border-gray-100 p-6 animate-slide-up overflow-hidden">
-                                        <div className="relative mb-4">
-                                            <input
-                                                type="text"
-                                                placeholder="Search research compounds..."
-                                                className="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 text-dark font-bold placeholder:text-gray-400"
-                                                autoFocus
-                                                value={searchQuery}
-                                                onChange={(e) => setSearchQuery(e.target.value)}
-                                            />
-                                            <svg className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                            </svg>
+                            {/* FLOATING SEARCH OVERLAY */}
+                            {searchOpen && (
+                                <div className="absolute right-0 top-full mt-4 w-72 md:w-96 bg-white shadow-2xl rounded-2xl border border-gray-100 p-4 md:p-6 animate-slide-up overflow-hidden z-50">
+                                    <div className="relative mb-4">
+                                        <input
+                                            type="text"
+                                            placeholder="Search research compounds..."
+                                            className="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 text-dark font-bold placeholder:text-gray-400"
+                                            autoFocus
+                                            value={searchQuery}
+                                            onChange={(e) => setSearchQuery(e.target.value)}
+                                        />
+                                        <svg className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                        </svg>
                                         </div>
 
                                         {/* RESULTS AREA */}
@@ -218,18 +217,6 @@ export default function Navbar() {
                                 </span>
                             </Link>
                         </div>
-
-                        {/* Mobile Search Button - Visible on Mobile Only */}
-                        <button
-                            type="button"
-                            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
-                            onClick={() => router.push('/shop')}
-                            aria-label="Search products"
-                        >
-                            <svg className="w-6 h-6 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
-                        </button>
 
                         {/* Mobile Menu Button - Visible on Mobile Only */}
                         <button
