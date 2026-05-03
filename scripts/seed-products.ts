@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-const MONGO_URI = 'mongodb+srv://mishusema237_db_user:Boominati@peptides.qwpchdj.mongodb.net/?appName=peptides';
+dotenv.config({ path: '.env.local' });
 
 const ProductSchema = new mongoose.Schema({
     name: { type: String, required: true },
@@ -166,7 +167,13 @@ const peptides = [
 
 async function seedProducts() {
     try {
-        await mongoose.connect(MONGO_URI);
+        const mongoUri = process.env.MONGODB_URI;
+        if (!mongoUri) {
+            console.error('MONGODB_URI not found in .env.local');
+            process.exit(1);
+        }
+        
+        await mongoose.connect(mongoUri);
         console.log('Connected to MongoDB');
 
         // Clear existing products (optional - comment out to keep existing)
