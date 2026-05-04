@@ -3,6 +3,12 @@ import type { NextRequest } from 'next/server';
 
 export async function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
+    const userAgent = request.headers.get('user-agent') || '';
+
+    // Allow Facebook crawler
+    if (userAgent.includes('facebookexternalhit') || userAgent.includes('Facebot')) {
+        return NextResponse.next();
+    }
 
     // Protect /admin routes, but allow /admin-login
     if (pathname.startsWith('/admin') && pathname !== '/admin-login') {
@@ -26,6 +32,6 @@ export const config = {
          * - _next/image (image optimization files)
          * - favicon.ico, sitemap.xml, robots.txt (metadata files)
          */
-        "/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)"
+        "/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|api/auth).*)"
     ]
 };
