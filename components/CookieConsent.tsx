@@ -29,10 +29,12 @@ export default function CookieConsent() {
 
     return (
         <div className="fixed bottom-0 left-0 right-0 z-50 p-3">
-            <div className="bg-white/95 backdrop-blur-sm shadow-xl rounded-t-xl md:rounded-xl mx-auto max-w-md md:max-w-2xl">
-                <div className="p-4">
-                    <p className="text-sm text-gray-600 mb-3 text-center md:text-left">
-                        We use cookies to improve your experience.
+            <div className="bg-white/95 backdrop-blur-sm shadow-xl rounded-t-xl md:rounded-xl mx-auto max-w-md md:max-w-3xl">
+                <div className="p-4 md:p-6">
+                    <p className="text-sm text-gray-600 mb-3 text-center md:text-left leading-relaxed">
+                        We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. 
+                        By clicking "Accept", you consent to our use of cookies. You can manage your preferences or decline 
+                        non-essential cookies at any time. For more information, please read our Privacy Policy.
                     </p>
                     <div className="flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
                         <div className="flex gap-2 justify-center md:justify-start">
