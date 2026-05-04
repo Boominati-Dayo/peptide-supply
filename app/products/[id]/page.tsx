@@ -42,7 +42,7 @@ export default function ProductDetailPage() {
             
             // Update canonical URL
             const canonical = document.querySelector('link[rel="canonical"]');
-            if (canonical) canonical.setAttribute('href', `https://peptide-supply-lime.vercel.app/products/${product._id}`);
+            if (canonical) canonical.setAttribute('href', `/products/${product._id}`);
         }
     }, [product]);
 
@@ -123,7 +123,7 @@ export default function ProductDetailPage() {
                 title={`${product.name} | PeptideMint`}
                 description={productDescription}
                 image={productImage}
-                url={`https://peptide-supply-lime.vercel.app/products/${product._id}`}
+                url={`/products/${product._id}`}
             />
             {/* Breadcrumb */}
             <Breadcrumb

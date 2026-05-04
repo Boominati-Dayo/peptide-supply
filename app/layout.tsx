@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     title: "PeptideMint — Premium Peptides for Sale",
     description:
       "High-quality peptides for sale. Secure checkout, trusted formulations, and fast delivery.",
-    url: "https://peptide-supply-lime.vercel.app",
+    url: "/",
     siteName: "PeptideMint",
     images: [
       {
-        url: "https://peptide-supply-lime.vercel.app/thumbnail.png",
+        url: "/thumbnail.png",
         width: 1200,
         height: 630,
         alt: "PeptideMint — Premium Peptides for Sale",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: "PeptideMint — Premium Peptides for Sale",
     description:
       "Buy premium peptides online. Trusted quality, fast delivery.",
-    images: ["https://peptide-supply-lime.vercel.app/thumbnail.png"],
+    images: ["/thumbnail.png"],
   },
 };
 
