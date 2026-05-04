@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
         // Optional: Send auto-response email to user
         // Send notification to admin
         try {
-            const adminEmail = process.env.ADMIN_EMAIL || 'admin@peptidelab.com';
+            const adminEmail = process.env.ADMIN_EMAIL || 'support@peptidemint.com';
             await sendEmail({
                 to: adminEmail,
                 subject: `New Inquiry: ${purpose || 'General'} from ${name}`,

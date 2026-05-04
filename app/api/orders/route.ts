@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
 
         // Send Notification Email to Admin
         try {
-            const adminEmail = process.env.ADMIN_EMAIL || 'admin@peptidelab.com';
+            const adminEmail = process.env.ADMIN_EMAIL || 'support@peptidemint.com';
             await sendEmail({
                 to: adminEmail,
                 ...emailTemplates.orderNotificationAdmin(orderNumber, shippingInfo.email, items, total),

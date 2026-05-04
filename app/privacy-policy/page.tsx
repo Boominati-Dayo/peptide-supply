@@ -64,7 +64,7 @@ export default function PrivacyPolicyPage() {
                     <h2 className="text-2xl font-bold text-dark mb-4">7. Contact Our Privacy Team</h2>
                     <p>
                         If you have any questions about this Privacy Policy or how your data is handled, please reach out to us:
-                        <a href="mailto:support@peptidelab.com" className="ml-2 font-bold text-primary hover:underline">support@peptidelab.com</a>
+                        <a href="mailto:support@peptidemint.com" className="ml-2 font-bold text-primary hover:underline">support@peptidemint.com</a>
                     </p>
                 </section>
             </div>

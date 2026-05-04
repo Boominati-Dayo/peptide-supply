@@ -91,7 +91,7 @@ export default function TermsPage() {
                     <h2 className="text-2xl font-bold text-dark mb-4">11. Contact Information</h2>
                     <p>
                         For questions or concerns regarding these Terms & Conditions, please contact us at:
-                        <a href="mailto:support@peptidelab.com" className="ml-2 font-bold text-primary hover:underline">support@peptidelab.com</a>
+                        <a href="mailto:support@peptidemint.com" className="ml-2 font-bold text-primary hover:underline">support@peptidemint.com</a>
                     </p>
                 </section>
             </div>

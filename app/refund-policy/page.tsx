@@ -65,7 +65,7 @@ export default function RefundPolicyPage() {
                         However, if you receive a damaged or defective item, we may approve a replacement after proper review.
                     </p>
                     <div className="mt-6 bg-blue-50/50 p-6 rounded-xl border border-blue-100">
-                        <p className="font-bold mb-3">To request a replacement, please email <a href="mailto:support@peptidelab.com" className="text-primary hover:underline">support@peptidelab.com</a> within 3 days of receiving your order, including:</p>
+                        <p className="font-bold mb-3">To request a replacement, please email <a href="mailto:support@peptidemint.com" className="text-primary hover:underline">support@peptidemint.com</a> within 3 days of receiving your order, including:</p>
                         <ul className="list-disc pl-5 space-y-2">
                             <li>Your Order Number</li>
                             <li>The Lot Number (printed on the product)</li>
@@ -82,7 +82,7 @@ export default function RefundPolicyPage() {
                     <h2 className="text-2xl font-bold text-dark mb-4">5. Contact Us</h2>
                     <p>
                         If you have questions or concerns regarding this Refund & Return Policy, please contact us at:
-                        <a href="mailto:support@peptidelab.com" className="ml-2 font-bold text-primary hover:underline">support@peptidelab.com</a>
+                        <a href="mailto:support@peptidemint.com" className="ml-2 font-bold text-primary hover:underline">support@peptidemint.com</a>
                     </p>
                 </section>
             </div>
