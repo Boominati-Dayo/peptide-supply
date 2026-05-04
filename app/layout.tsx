@@ -8,7 +8,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://peptide-supply-lime.vercel.app"),
+  metadataBase: new URL("https://peptidemint.com"),
 
   title: "PeptideMint — Premium Peptides for Sale",
   description:
