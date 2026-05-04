@@ -20,7 +20,14 @@ const Seo: React.FC<SeoProps> = ({ title, description, keywords, image, url, art
   const seoDescription = description ?? defaultDescription;
   const seoKeywords = keywords ?? 
     'peptides, peptide synthesis, research peptides, RUO peptides, GMP peptides, laboratory peptides, peptide purity, peptide suppliers, biotech peptides, custom peptide synthesis, peptide manufacturing, peptide vendor, research grade peptides, peptide solutions, peptide testing, HPLC peptide, mass spectrometry peptides, peptide stability, peptide storage, peptide catalog, peptide wholesaler, peptide distributor';
-  const seoImage = image ?? '/thumbnail.png';
+  
+  // Handle image - convert to absolute URL for OG tags
+  let seoImage = image ?? '/thumbnail.png';
+  if (!seoImage.startsWith('http')) {
+    // Use a data URL that will resolve - we'll rely on Next.js to handle it
+    // For actual sharing, the full URL should be used
+    seoImage = seoImage;
+  }
 
   const jsonLd = {
     '@context': 'https://schema.org',

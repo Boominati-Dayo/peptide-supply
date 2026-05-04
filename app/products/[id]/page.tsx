@@ -46,6 +46,7 @@ export default function ProductDetailPage() {
         }
     }, [product]);
 
+    // Product image - use first image or default
     const productImage = product?.images?.[0] || '/thumbnail.png';
     const productDescription = product?.description?.slice(0, 160) || 'Shop high-quality peptides at PeptideMint';
 
