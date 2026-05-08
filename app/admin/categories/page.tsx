@@ -5,15 +5,13 @@ import Button from '@/components/ui/Button';
 import toast from 'react-hot-toast';
 
 export default function AdminCategoriesPage() {
-    const [categories, setCategories] = useState<any[]>([]);
+    const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true);
     const [isSaving, setIsSaving] = useState(false);
     const [deletingId, setDeletingId] = useState<string | null>(null);
-    const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
-    const [deletingMultiple, setDeletingMultiple] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editCategory, setEditCategory] = useState<any>(null);
-    const [formData, setFormData] = useState({ name: '', description: '', slug: '' });
+    const [formData, setFormData] = useState({ name: '', description: '' });
 
     const fetchCategories = async (silent = false) => {
         if (!silent) setLoading(true);
@@ -50,9 +48,9 @@ export default function AdminCategoriesPage() {
 
             toast.success(editCategory ? 'Category updated!' : 'Category created!');
             await fetchCategories(true);
-        setIsModalOpen(false);
-        setEditCategory(null);
-        setFormData({ name: '', description: '', slug: '' });
+            setIsModalOpen(false);
+            setEditCategory(null);
+            setFormData({ name: '', description: '' });
         } catch (error) {
             toast.error('Failed to save category');
         } finally {
@@ -79,86 +77,18 @@ export default function AdminCategoriesPage() {
 
     const openEdit = (cat: any) => {
         setEditCategory(cat);
-        setFormData({ name: cat.name, description: cat.description || '', slug: cat.slug || '' });
+        setFormData({ name: cat.name, description: cat.description || '' });
         setIsModalOpen(true);
-    };
-
-    const toggleSelect = (id: string) => {
-        setSelectedIds(prev => {
-            const next = new Set(prev);
-            if (next.has(id)) {
-                next.delete(id);
-            } else {
-                next.add(id);
-            }
-            return next;
-        });
-    };
-
-    const toggleSelectAll = () => {
-        if (selectedIds.size === categories.length) {
-            setSelectedIds(new Set());
-        } else {
-            setSelectedIds(new Set((categories as any[]).map(c => c._id)));
-        }
-    };
-
-    const handleDeleteSelected = async () => {
-        if (selectedIds.size === 0) {
-            toast.error('No categories selected');
-            return;
-        }
-        if (!confirm(`Are you sure you want to delete ${selectedIds.size} category(ies)? Products in these categories may need reassignment.`)) {
-            return;
-        }
-
-        setDeletingMultiple(true);
-        let deleted = 0;
-        let failed = 0;
-
-        for (const id of selectedIds) {
-            try {
-                const res = await fetch(`/api/categories/${id}`, { method: 'DELETE' });
-                if (res.ok) {
-                    deleted++;
-                    setCategories((prev: any[]) => prev.filter(c => c._id !== id));
-                } else {
-                    failed++;
-                }
-            } catch {
-                failed++;
-            }
-        }
-
-        setDeletingMultiple(false);
-        setSelectedIds(new Set());
-
-        if (failed === 0) {
-            toast.success(`Deleted ${deleted} category(ies)`);
-        } else {
-            toast.error(`Deleted ${deleted}, failed ${failed}`);
-        }
     };
 
     return (
         <div>
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
-                <h1 className="text-2xl font-bold text-dark">Category Management ({categories.length})</h1>
-                <div className="flex gap-2 flex-wrap">
-                    {selectedIds.size > 0 && (
-                        <Button
-                            onClick={handleDeleteSelected}
-                            disabled={deletingMultiple}
-                            className="!bg-red-600 hover:!bg-red-700 !text-white"
-                        >
-                            {deletingMultiple ? 'Deleting...' : `Delete Selected (${selectedIds.size})`}
-                        </Button>
-                    )}
-                    <Button onClick={() => { setEditCategory(null); setFormData({ name: '', description: '', slug: '' }); setIsModalOpen(true); }}>
-                        <span className="hidden sm:inline">Add New Category</span>
-                        <span className="sm:hidden">Add Category</span>
-                    </Button>
-                </div>
+                <h1 className="text-2xl font-bold text-dark">Category Management</h1>
+                <Button onClick={() => { setEditCategory(null); setFormData({ name: '', description: '' }); setIsModalOpen(true); }}>
+                    <span className="hidden sm:inline">Add New Category</span>
+                    <span className="sm:hidden">Add Category</span>
+                </Button>
             </div>
 
             <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
@@ -166,14 +96,6 @@ export default function AdminCategoriesPage() {
                     <table className="w-full">
                         <thead className="bg-gray-50 border-b">
                             <tr>
-                                <th className="px-3 md:px-6 py-3 text-left w-12">
-                                    <input
-                                        type="checkbox"
-                                        checked={selectedIds.size === categories.length && categories.length > 0}
-                                        onChange={toggleSelectAll}
-                                        className="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"
-                                    />
-                                </th>
                                 <th className="px-3 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                                 <th className="px-3 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">Slug</th>
                                 <th className="px-3 md:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">Description</th>
@@ -182,18 +104,10 @@ export default function AdminCategoriesPage() {
                         </thead>
                         <tbody className="divide-y divide-gray-200">
                             {loading ? (
-                                <tr><td colSpan={5} className="px-6 py-4 text-center">Loading...</td></tr>
+                                <tr><td colSpan={4} className="px-6 py-4 text-center">Loading...</td></tr>
                             ) : categories.length > 0 ? (
                                 categories.map((cat: any) => (
-                                    <tr key={cat._id} className={selectedIds.has(cat._id) ? 'bg-red-50' : ''}>
-                                        <td className="px-3 md:px-6 py-3 md:py-4">
-                                            <input
-                                                type="checkbox"
-                                                checked={selectedIds.has(cat._id)}
-                                                onChange={() => toggleSelect(cat._id)}
-                                                className="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"
-                                            />
-                                        </td>
+                                    <tr key={cat._id}>
                                         <td className="px-3 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm font-medium text-gray-900">{cat.name}</td>
                                         <td className="px-3 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-gray-500 hidden md:table-cell">{cat.slug}</td>
                                         <td className="px-3 md:px-6 py-3 md:py-4 text-sm text-gray-500 max-w-xs truncate hidden lg:table-cell">{cat.description}</td>
@@ -210,7 +124,7 @@ export default function AdminCategoriesPage() {
                                     </tr>
                                 ))
                             ) : (
-                                <tr><td colSpan={5} className="px-6 py-4 text-center text-sm text-gray-500">No categories found.</td></tr>
+                                <tr><td colSpan={4} className="px-6 py-4 text-center text-sm text-gray-500">No categories found.</td></tr>
                             )}
                         </tbody>
                     </table>
