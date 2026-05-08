@@ -356,8 +356,15 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto bg-white p-6 md:p-16 rounded-[40px] shadow-2xl border border-gray-100 mb-20 relative z-10 -mt-20">
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-heading font-bold text-dark mb-2">Featured Products</h3>
+            <p className="text-gray-500">Handpicked research peptides for your needs</p>
+          </div>
+          
+          {/* 3 Featured Products - 1 from each category */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {products.map((product: any) => (
+            {products.slice(0, 3).map((product: any) => (
               <ProductCard
                 key={product._id}
                 id={product._id}
@@ -368,8 +375,20 @@ export default function Home() {
                 inStock={!product.soldout_status}
                 purity={product.purity}
                 sku={product.sku}
+                content={product.content}
+                size={product.size}
+                form={product.form}
               />
             ))}
+          </div>
+          
+          {/* View All Link */}
+          <div className="text-center mt-10">
+            <Link href="/shop">
+              <Button variant="outline" className="border-2 border-primary/30 hover:border-primary">
+                View All Products
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
