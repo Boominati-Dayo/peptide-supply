@@ -102,13 +102,15 @@ export default function CheckoutPage() {
 
             const data = await response.json();
 
-            if (!response.ok) {
+            if (!response.ok || !data.success) {
                 throw new Error(data.message || 'Failed to place order');
             }
 
-            // Success
+            // Success - clear cart and redirect to order confirmation
             clearCart();
-            router.push(`/order-complete?order=${data.orderNumber}`);
+            
+            // Use window.location for a clean redirect to ensure page reloads properly
+            window.location.href = `/order-complete?order=${data.orderNumber}`;
         } catch (error: any) {
             console.error('Order failed:', error);
             alert(error.message || 'Failed to place order. Please try again.');
