@@ -67,6 +67,7 @@ export default function AdminLoginPage() {
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
                                 autoComplete="username"
+                                suppressHydrationWarning
                             />
                         </div>
                         <div>
@@ -81,6 +82,7 @@ export default function AdminLoginPage() {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 autoComplete="current-password"
+                                suppressHydrationWarning
                             />
                         </div>
                     </div>
@@ -89,6 +91,7 @@ export default function AdminLoginPage() {
                         <button
                             type="submit"
                             disabled={loading}
+                            suppressHydrationWarning
                             className={`group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
                         >
                             {loading ? (
