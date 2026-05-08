@@ -3,6 +3,8 @@ import connectDB from '@/lib/db/mongodb';
 import Order from '@/models/Order';
 import { sendEmail, emailTemplates } from '@/lib/email/nodemailer';
 
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://peptidemint.com';
+
 export async function GET() {
     try {
         await connectDB();
@@ -46,7 +48,8 @@ export async function POST(req: NextRequest) {
         try {
             await sendEmail({
                 to: shippingInfo.email,
-                ...emailTemplates.orderConfirmation(orderNumber, items, total),
+                ...emailTemplates.orderConfirmation(orderNumber, items, total, APP_URL),
+                appUrl: APP_URL,
             });
         } catch (emailError) {
             console.error('Failed to send user confirmation email:', emailError);
@@ -57,7 +60,8 @@ export async function POST(req: NextRequest) {
             const adminEmail = process.env.ADMIN_EMAIL || 'support@peptidemint.com';
             await sendEmail({
                 to: adminEmail,
-                ...emailTemplates.orderNotificationAdmin(orderNumber, shippingInfo.email, items, total),
+                ...emailTemplates.orderNotificationAdmin(orderNumber, shippingInfo.email, items, total, APP_URL),
+                appUrl: APP_URL,
             });
         } catch (emailError) {
             console.error('Failed to send admin notification email:', emailError);

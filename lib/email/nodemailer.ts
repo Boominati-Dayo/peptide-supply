@@ -20,7 +20,9 @@ const transporter = nodemailer.createTransport({
 /**
  * Base email template
  */
-function getEmailTemplate(content: string): string {
+function getEmailTemplate(content: string, appUrl?: string): string {
+  const baseUrl = appUrl || process.env.NEXT_PUBLIC_APP_URL || 'https://peptidemint.com';
+  
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -41,7 +43,7 @@ function getEmailTemplate(content: string): string {
           background-color: #ffffff;
         }
         .header {
-          background: linear-gradient(135deg, #0A4D7D 0%, #00B4D8 100%);
+          background: linear-gradient(135deg, #d9046d 0%, #ff90c8 100%);
           padding: 30px 20px;
           text-align: center;
         }
@@ -52,35 +54,41 @@ function getEmailTemplate(content: string): string {
           margin: 0;
         }
         .tagline {
-          color: #48CAE4;
+          color: #fff0f5;
           font-size: 14px;
           margin: 5px 0 0 0;
         }
         .content {
           padding: 40px 30px;
-          color: #023047;
+          color: #4a0032;
           line-height: 1.6;
         }
         .button {
           display: inline-block;
           padding: 14px 30px;
-          background-color: #00B4D8;
+          background-color: #d9046d;
           color: #ffffff !important;
           text-decoration: none;
           border-radius: 8px;
           font-weight: 600;
           margin: 20px 0;
         }
+        .button:hover {
+          background-color: #c2185b;
+        }
         .footer {
-          background-color: #023047;
+          background-color: #4a0032;
           color: #ffffff;
           padding: 30px 20px;
           text-align: center;
           font-size: 14px;
         }
         .footer a {
-          color: #48CAE4;
+          color: #ff90c8;
           text-decoration: none;
+        }
+        .footer a:hover {
+          color: #ff5c8d;
         }
       </style>
     </head>
@@ -96,12 +104,12 @@ function getEmailTemplate(content: string): string {
         <div class="footer">
           <p>© ${new Date().getFullYear()} PeptideMint. All rights reserved.</p>
           <p>
-            <a href="https://wa.me/19014317111?text=Hi%20PeptideMint!%20I%27m%20interested%20in%20your%20research-grade%20peptides." target="_blank" style="color: #68D094; text-decoration: none;">💬 Chat on WhatsApp</a>
+            <a href="${baseUrl}" target="_blank">Visit Our Website</a>
           </p>
           <p>
-            <a href="#">Unsubscribe</a> | 
-            <a href="#">Privacy Policy</a> | 
-            <a href="#">Contact Us</a>
+            <a href="${baseUrl}/privacy-policy" target="_blank">Privacy Policy</a> | 
+            <a href="${baseUrl}/terms" target="_blank">Terms of Service</a> | 
+            <a href="${baseUrl}/contact" target="_blank">Contact Us</a>
           </p>
         </div>
       </div>
@@ -117,17 +125,21 @@ export async function sendEmail({
   to,
   subject,
   html,
+  appUrl,
 }: {
   to: string;
   subject: string;
   html: string;
+  appUrl?: string;
 }) {
+  const baseUrl = appUrl || process.env.NEXT_PUBLIC_APP_URL || 'https://peptidemint.com';
+  
   try {
     const info = await transporter.sendMail({
-      from: `"PeptideMint" <${process.env.SMTP_FROM}>`,
+      from: `"PeptideMint" <${process.env.SMTP_FROM || 'support@peptidemint.com'}>`,
       to,
       subject,
-      html: getEmailTemplate(html),
+      html: getEmailTemplate(html, baseUrl),
     });
 
     console.log('✅ Email sent:', info.messageId);
@@ -143,7 +155,7 @@ export async function sendEmail({
  */
 export const emailTemplates = {
   // Order confirmation (User)
-  orderConfirmation: (orderNumber: string, items: any[], total: number) => {
+  orderConfirmation: (orderNumber: string, items: any[], total: number, baseUrl: string = 'https://peptidemint.com') => {
     const subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const shipping = total - subtotal;
 
@@ -163,13 +175,13 @@ export const emailTemplates = {
         </div>
         <h3>What's Next?</h3>
         <p>You will receive payment details shortly. Once payment is confirmed, we'll prepare your order for shipment.</p>
-        <a href="${process.env.NEXT_PUBLIC_APP_URL}/track-order" class="button">Track Your Order</a>
+        <a href="${baseUrl}/track-order" class="button">Track Your Order</a>
       `,
     };
   },
 
   // Order confirmation (Admin)
-  orderNotificationAdmin: (orderNumber: string, customerEmail: string, items: any[], total: number) => {
+  orderNotificationAdmin: (orderNumber: string, customerEmail: string, items: any[], total: number, baseUrl: string = 'https://peptidemint.com') => {
     const subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const shipping = total - subtotal;
 
@@ -188,13 +200,13 @@ export const emailTemplates = {
           <p style="margin: 5px 0;">Shipping: $${shipping.toFixed(2)}</p>
           <p style="font-size: 18px; font-weight: bold; margin-top: 10px;">Total: $${total.toFixed(2)}</p>
         </div>
-        <a href="${process.env.NEXT_PUBLIC_APP_URL}/admin/orders" class="button">View in Dashboard</a>
+        <a href="${baseUrl}/admin/orders" class="button">View in Dashboard</a>
       `,
     };
   },
 
   // Payment details
-  paymentDetails: (orderNumber: string, paymentMethod: string, paymentInstructions: string) => ({
+  paymentDetails: (orderNumber: string, paymentMethod: string, paymentInstructions: string, baseUrl: string = 'https://peptidemint.com') => ({
     subject: `Payment Details for Order #${orderNumber}`,
     html: `
       <h2>Payment Instructions</h2>
@@ -206,22 +218,23 @@ export const emailTemplates = {
       </div>
       <p><strong>Important:</strong> Please include your order number <strong>#${orderNumber}</strong> in the payment reference.</p>
       <p>Once payment is received, we'll confirm and prepare your order for shipment.</p>
+      <a href="${baseUrl}/track-order" class="button">Track Your Order</a>
     `,
   }),
 
   // Order status update
-  orderStatusUpdate: (orderNumber: string, status: string, message: string) => ({
+  orderStatusUpdate: (orderNumber: string, status: string, message: string, baseUrl: string = 'https://peptidemint.com') => ({
     subject: `Order #${orderNumber} - ${status}`,
     html: `
       <h2>Order Status Update</h2>
       <p>Your order <strong>#${orderNumber}</strong> status has been updated to: <strong>${status}</strong></p>
       <p>${message}</p>
-      <a href="${process.env.NEXT_PUBLIC_APP_URL}/track-order" class="button">Track Your Order</a>
+      <a href="${baseUrl}/track-order" class="button">Track Your Order</a>
     `,
   }),
 
   // Custom reply
-  customReply: (orderNumber: string, message: string) => ({
+  customReply: (orderNumber: string, message: string, baseUrl: string = 'https://peptidemint.com') => ({
     subject: `Re: Order #${orderNumber} Inquiry`,
     html: `
       <h2>Hello,</h2>
@@ -229,12 +242,14 @@ export const emailTemplates = {
       <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; white-space: pre-wrap;">
         ${message}
       </div>
+      <p>If you have any further questions, please don't hesitate to reach out.</p>
       <p>Best regards,<br>The PeptideMint Team</p>
+      <a href="${baseUrl}/contact" class="button">Contact Us</a>
     `,
   }),
 
   // Contact form response
-  contactResponse: (name: string, message: string) => ({
+  contactResponse: (name: string, message: string, baseUrl: string = 'https://peptidemint.com') => ({
     subject: 'Response to Your Inquiry',
     html: `
       <h2>Hello ${name},</h2>
@@ -243,11 +258,12 @@ export const emailTemplates = {
         ${message}
       </div>
       <p>If you have any further questions, please don't hesitate to reach out.</p>
+      <a href="${baseUrl}/contact" class="button">Contact Us</a>
     `,
   }),
 
   // Newsletter subscription confirmation
-  newsletterSubscription: (email: string) => ({
+  newsletterSubscription: (email: string, baseUrl: string = 'https://peptidemint.com') => ({
     subject: 'Welcome to PeptideMint Newsletter!',
     html: `
       <h2>Welcome to PeptideMint!</h2>
@@ -260,6 +276,7 @@ export const emailTemplates = {
         <li>Research insights and educational content</li>
       </ul>
       <p>Stay tuned for exciting updates from PeptideMint!</p>
+      <a href="${baseUrl}/shop" class="button">Shop Now</a>
       <p>Best regards,<br>The PeptideMint Team</p>
     `,
   }),
