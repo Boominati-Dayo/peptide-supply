@@ -158,9 +158,6 @@ function OrderCompleteContent() {
 
                 {/* Actions */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link href="/account/orders">
-                        <Button variant="outline">View Orders</Button>
-                    </Link>
                     <Link href="/shop">
                         <Button variant="primary">Continue Shopping</Button>
                     </Link>
