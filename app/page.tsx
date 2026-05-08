@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import ProductCard from '@/components/ui/Card';
+import ProductCarousel from '@/components/ProductCarousel';
 import Seo from '@/components/Seo';
 import LogoLoop from '@/components/LogoLoop';
 
@@ -24,7 +25,7 @@ export default function Home() {
         const productsData = await productsRes.json();
         const testimonialsData = await testimonialsRes.json();
         
-        setProducts(productsData.success ? productsData.data.slice(0, 3) : []);
+        setProducts(productsData.success ? productsData.data : []);
         setTestimonials(testimonialsData.slice(0, 6));
       } catch (error) {
         console.error('Error fetching home data:', error);
@@ -359,29 +360,18 @@ export default function Home() {
           {/* Section Header */}
           <div className="text-center mb-12">
             <h3 className="text-2xl md:text-3xl font-heading font-bold text-dark mb-2">Featured Products</h3>
-            <p className="text-gray-500">Handpicked research peptides for your needs</p>
+            <p className="text-gray-500">Browse our selection of research peptides</p>
           </div>
           
-          {/* 3 Featured Products - 1 from each category */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {products.slice(0, 3).map((product: any) => (
-              <ProductCard
-                key={product._id}
-                id={product._id}
-                name={product.name}
-                price={product.price}
-                image={product.images?.[0] || '/images/placeholder-product.jpg'}
-                category={product.category}
-                inStock={!product.soldout_status}
-                purity={product.purity}
-                sku={product.sku}
-                content={product.content}
-                size={product.size}
-                form={product.form}
-              />
-            ))}
-          </div>
-          
+          {/* Product Carousel */}
+          {products.length > 0 ? (
+            <ProductCarousel products={products} />
+          ) : (
+            <div className="text-center py-10">
+              <p className="text-gray-400">No products available.</p>
+            </div>
+          )}
+
           {/* View All Link */}
           <div className="text-center mt-10">
             <Link href="/shop">
