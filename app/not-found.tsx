@@ -15,10 +15,10 @@ export default function NotFound() {
                     </h1>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                         <Image
-                            src="/images/placeholder-product.jpg"
+                            src="/images/transparent-peptide-bottle.png"
                             alt="Not found"
-                            width={120}
-                            height={120}
+                            width={200}
+                            height={200}
                             className="rounded-full opacity-20"
                         />
                     </div>
