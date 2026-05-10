@@ -93,25 +93,21 @@ export default function ShopPage() {
 
     const getPageNumbers = () => {
         const pages: (number | string)[] = [];
-        const maxVisible = isMobile ? 3 : 5;
+        const maxVisible = 5;
         
-        if (totalPages <= maxVisible) {
+        if (totalPages <= 5) {
             for (let i = 1; i <= totalPages; i++) pages.push(i);
         } else {
-            if (currentPage <= 3) {
-                for (let i = 1; i <= 4; i++) pages.push(i);
-                pages.push('...');
-                pages.push(totalPages);
-            } else if (currentPage >= totalPages - 2) {
-                pages.push(1);
-                pages.push('...');
-                for (let i = totalPages - 3; i <= totalPages; i++) pages.push(i);
+            if (currentPage === 1) {
+                pages.push(1, 2, 3, '...', totalPages);
+            } else if (currentPage === totalPages) {
+                pages.push(1, '...', totalPages - 2, totalPages - 1, totalPages);
+            } else if (currentPage === 2) {
+                pages.push(1, 2, 3, 4, '...', totalPages);
+            } else if (currentPage === totalPages - 1) {
+                pages.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
             } else {
-                pages.push(1);
-                pages.push('...');
-                for (let i = currentPage - 1; i <= currentPage + 1; i++) pages.push(i);
-                pages.push('...');
-                pages.push(totalPages);
+                pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
             }
         }
         return pages;
@@ -289,13 +285,14 @@ export default function ShopPage() {
 
                     {/* Working Pagination */}
                     {totalPages > 1 && (
-                        <div className="mt-12 flex justify-center items-center gap-2">
+                        <div className="mt-12 flex flex-wrap justify-center items-center gap-1 md:gap-2">
                             <button
                                 onClick={() => { setCurrentPage(p => Math.max(1, p - 1)); scrollToTop(); }}
                                 disabled={currentPage === 1}
-                                className="px-4 py-2 border rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium"
+                                className="px-2 md:px-4 py-2 border rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed text-xs md:text-sm font-medium"
                             >
-                                Prev
+                                <span className="hidden sm:inline">Prev</span>
+                                <span className="sm:hidden">&#8592;</span>
                             </button>
                             
                             {getPageNumbers().map((page, index) => (
@@ -303,7 +300,7 @@ export default function ShopPage() {
                                     <button
                                         key={index}
                                         onClick={() => handlePageChange(page)}
-                                        className={`px-4 py-2 rounded-lg text-sm font-medium ${
+                                        className={`min-w-[36px] md:min-w-[44px] py-2 rounded-lg text-xs md:text-sm font-medium ${
                                             currentPage === page
                                                 ? 'bg-primary text-white'
                                                 : 'border hover:bg-gray-50'
@@ -312,16 +309,17 @@ export default function ShopPage() {
                                         {page}
                                     </button>
                                 ) : (
-                                    <span key={index} className="px-2 text-gray-400">...</span>
+                                    <span key={index} className="px-1 md:px-2 text-gray-400 text-xs md:text-sm">...</span>
                                 )
                             ))}
 
                             <button
                                 onClick={() => { setCurrentPage(p => Math.min(totalPages, p + 1)); scrollToTop(); }}
                                 disabled={currentPage === totalPages}
-                                className="px-4 py-2 border rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed text-sm font-medium"
+                                className="px-2 md:px-4 py-2 border rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed text-xs md:text-sm font-medium"
                             >
-                                Next
+                                <span className="hidden sm:inline">Next</span>
+                                <span className="sm:hidden">&#8594;</span>
                             </button>
                         </div>
                     )}
