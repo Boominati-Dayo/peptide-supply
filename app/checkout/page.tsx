@@ -211,7 +211,30 @@ export default function CheckoutPage() {
                                 >
                                     <option value="Canada">Canada</option>
                                     <option value="United States">United States</option>
+                                    <option value="China">China</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="Russia">Russia</option>
+                                    <option value="Spain">Spain</option>
                                     <option value="United Kingdom">United Kingdom</option>
+                                    <option value="France">France</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Netherlands">Netherlands</option>
+                                    <option value="Sweden">Sweden</option>
+                                    <option value="Norway">Norway</option>
+                                    <option value="Austria">Austria</option>
+                                    <option value="Switzerland">Switzerland</option>
+                                    <option value="Belgium">Belgium</option>
+                                    <option value="Portugal">Portugal</option>
+                                    <option value="Ireland">Ireland</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="South Korea">South Korea</option>
+                                    <option value="Singapore">Singapore</option>
+                                    <option value="India">India</option>
+                                    <option value="UAE">UAE</option>
+                                    <option value="Brazil">Brazil</option>
+                                    <option value="Mexico">Mexico</option>
+                                    <option value="New Zealand">New Zealand</option>
                                 </select>
                             </div>
                         </div>
