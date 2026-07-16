@@ -1,10 +1,13 @@
 'use client';
 
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import Button from '@/components/ui/Button';
 import Image from 'next/image';
 
 export default function NotFound() {
+    const t = useTranslations('notFound');
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-white px-4 py-16">
             <div className="max-w-2xl w-full text-center">
@@ -26,23 +29,22 @@ export default function NotFound() {
 
                 {/* Message */}
                 <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">
-                    Page Not Found
+                    {t('title')}
                 </h2>
                 <p className="text-gray-600 text-lg mb-8 max-w-md mx-auto">
-                    Oops! The page you're looking for seems to have wandered off. 
-                    Let's get you back on track.
+                    {t('description')}
                 </p>
 
                 {/* Actions */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link href="/">
                         <Button size="lg" className="w-full sm:w-auto">
-                            Go Home
+                            {t('goHome')}
                         </Button>
                     </Link>
                     <Link href="/shop">
                         <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                            Browse Products
+                            {t('browseProducts')}
                         </Button>
                     </Link>
                 </div>

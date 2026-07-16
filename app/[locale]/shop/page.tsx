@@ -1,9 +1,12 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 import ProductCard from '@/components/ui/Card';
 
 export default function ShopPage() {
+    const t = useTranslations('shop');
+    const ct = useTranslations('common');
     const [products, setProducts] = useState<any[]>([]);
     const [categories, setCategories] = useState<string[]>(['All']);
     const [loading, setLoading] = useState(true);
@@ -117,8 +120,8 @@ export default function ShopPage() {
         <div className="container mx-auto px-4 py-8">
             {/* Header */}
             <div className="mb-6">
-                <h1 className="text-3xl font-heading font-bold text-dark">Shop Peptides</h1>
-                <p className="text-gray-500 mt-1">{filteredProducts.length} products found</p>
+                <h1 className="text-3xl font-heading font-bold text-dark">{t('pageTitle')}</h1>
+                <p className="text-gray-500 mt-1">{t('productsFound', { count: filteredProducts.length })}</p>
             </div>
 
             {/* Search Bar - Visible on small screens */}
@@ -126,7 +129,7 @@ export default function ShopPage() {
                 <div className="relative">
                     <input
                         type="text"
-                        placeholder="Search products..."
+                        placeholder={t('searchPlaceholder')}
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         className="w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
@@ -153,7 +156,7 @@ export default function ShopPage() {
                                 <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
                                 </svg>
-                                Filters
+                                {t('filters')}
                             </h3>
                             <svg
                                 className={`w-5 h-5 text-gray-600 transition-transform ${filtersOpen ? 'rotate-180' : ''}`}
@@ -170,11 +173,11 @@ export default function ShopPage() {
                             <div className="p-6 space-y-6">
                                 {/* Search - Desktop only */}
                                 <div className="hidden lg:block">
-                                    <h4 className="font-bold text-sm uppercase tracking-wider text-gray-700 mb-3">Search</h4>
+                                    <h4 className="font-bold text-sm uppercase tracking-wider text-gray-700 mb-3">{t('search')}</h4>
                                     <div className="relative">
                                         <input
                                             type="text"
-                                            placeholder="Search products..."
+                                            placeholder={t('searchPlaceholder')}
                                             value={searchQuery}
                                             onChange={(e) => setSearchQuery(e.target.value)}
                                             className="w-full px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm"
@@ -190,7 +193,7 @@ export default function ShopPage() {
 
                                 {/* Categories */}
                                 <div>
-                                    <h4 className="font-bold text-sm uppercase tracking-wider text-gray-700 mb-3">Categories</h4>
+                                    <h4 className="font-bold text-sm uppercase tracking-wider text-gray-700 mb-3">{t('categories')}</h4>
                                     <ul className="space-y-1">
                                         {categories.map((cat) => (
                                             <li key={cat}>
@@ -210,32 +213,32 @@ export default function ShopPage() {
 
                                 {/* Price Filter */}
                                 <div>
-                                    <h4 className="font-bold text-sm uppercase tracking-wider text-gray-700 mb-3">Max Price</h4>
+                                    <h4 className="font-bold text-sm uppercase tracking-wider text-gray-700 mb-3">{t('maxPrice')}</h4>
                                     <div className="relative">
                                         <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 font-bold">$</span>
                                         <input
                                             type="number"
-                                            placeholder="Any price"
+                                            placeholder={t('anyPrice')}
                                             value={maxPrice}
                                             onChange={(e) => setMaxPrice(e.target.value)}
                                             className="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                                         />
                                     </div>
-                                    <p className="text-xs text-gray-500 mt-2">Leave empty for no limit</p>
+                                    <p className="text-xs text-gray-500 mt-2">{t('noLimit')}</p>
                                 </div>
 
                                 {/* Sort By */}
                                 <div>
-                                    <h4 className="font-bold text-sm uppercase tracking-wider text-gray-700 mb-3">Sort By</h4>
+                                    <h4 className="font-bold text-sm uppercase tracking-wider text-gray-700 mb-3">{t('sortBy')}</h4>
                                     <select
                                         value={sortBy}
                                         onChange={(e) => setSortBy(e.target.value)}
                                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm"
                                     >
-                                        <option value="default">Default Sorting</option>
-                                        <option value="price-low">Price: Low to High</option>
-                                        <option value="price-high">Price: High to Low</option>
-                                        <option value="newest">Newest Arrivals</option>
+                                        <option value="default">{t('defaultSorting')}</option>
+                                        <option value="price-low">{t('priceLowToHigh')}</option>
+                                        <option value="price-high">{t('priceHighToLow')}</option>
+                                        <option value="newest">{t('newestArrivals')}</option>
                                     </select>
                                 </div>
 
@@ -244,7 +247,7 @@ export default function ShopPage() {
                                     onClick={() => { setMaxPrice(''); setSelectedCategory('All'); setSortBy('default'); setSearchQuery(''); }}
                                     className="w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-lg transition-colors text-sm"
                                 >
-                                    Clear All Filters
+                                    {t('clearAllFilters')}
                                 </button>
                             </div>
                         </div>
@@ -273,12 +276,12 @@ export default function ShopPage() {
                         </div>
                     ) : (
                         <div className="text-center py-20 bg-gray-50 rounded-2xl">
-                            <p className="text-gray-500 text-lg">No products found matching your filters.</p>
+                            <p className="text-gray-500 text-lg">{t('noProductsFound')}</p>
                             <button
                                 onClick={() => { setMaxPrice(''); setSelectedCategory('All'); setSearchQuery(''); }}
                                 className="mt-4 text-primary font-bold underline"
                             >
-                                Clear all filters
+                                {t('clearFilters')}
                             </button>
                         </div>
                     )}
@@ -291,7 +294,7 @@ export default function ShopPage() {
                                 disabled={currentPage === 1}
                                 className="px-2 md:px-4 py-2 border rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed text-xs md:text-sm font-medium"
                             >
-                                <span className="hidden sm:inline">Prev</span>
+                                <span className="hidden sm:inline">{ct('prev')}</span>
                                 <span className="sm:hidden">&#8592;</span>
                             </button>
                             
@@ -318,7 +321,7 @@ export default function ShopPage() {
                                 disabled={currentPage === totalPages}
                                 className="px-2 md:px-4 py-2 border rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed text-xs md:text-sm font-medium"
                             >
-                                <span className="hidden sm:inline">Next</span>
+                                <span className="hidden sm:inline">{ct('next')}</span>
                                 <span className="sm:hidden">&#8594;</span>
                             </button>
                         </div>

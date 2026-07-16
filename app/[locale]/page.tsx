@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
+import { Link as LocaleLink } from '@/i18n/navigation';
 import Button from '@/components/ui/Button';
 import ProductCard from '@/components/ui/Card';
 import ProductCarousel from '@/components/ProductCarousel';
@@ -10,6 +12,8 @@ import Seo from '@/components/Seo';
 import LogoLoop from '@/components/LogoLoop';
 
 export default function Home() {
+  const t = useTranslations('home');
+  const ct = useTranslations('common');
   const [products, setProducts] = useState<any[]>([]);
   const [testimonials, setTestimonials] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -42,7 +46,7 @@ export default function Home() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
+          <p className="text-gray-600">{ct('loading')}</p>
         </div>
       </div>
     );
@@ -65,8 +69,8 @@ export default function Home() {
   return (
     <div className="bg-white scroll-smooth overflow-x-hidden">
       <Seo 
-        title="PeptideMint – Premium Research-Grade Peptides | GMP Certified"
-        description="PeptideMint offers high-purity, lab-tested peptides for research and professional applications. GMP-compliant manufacturing, HPLC verified purity, worldwide shipping."
+        title={t('pageTitle')}
+        description={t('pageDescription')}
         keywords="peptides, peptide synthesis, research peptides, RUO peptides, GMP peptides, laboratory peptides, peptide purity, peptide suppliers, biotech peptides, custom peptide synthesis, peptide manufacturing"
       />
       
@@ -83,38 +87,37 @@ export default function Home() {
             <div className="space-y-8">
               
               <h1 className="text-5xl md:text-6xl lg:text-7xl text-dark font-bold leading-tight">
-                Purity in <span className="text-primary">Every</span> Molecule
+                {t.rich('heroTitle', { highlight: (chunks) => <span className="text-primary">{chunks}</span> })}
               </h1>
               <p className="text-xl text-gray-600 max-w-xl leading-relaxed">
-                Premium research-grade peptides manufactured under strict quality standards. 
-                HPLC verified. GMP compliant. Delivered globally.
+                {t('heroSubtitle')}
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link href="/shop">
+                <LocaleLink href="/shop">
                   <Button size="lg" className="shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                    Explore Products
+                    {t('exploreProducts')}
                   </Button>
-                </Link>
-                <Link href="/about">
+                </LocaleLink>
+                <LocaleLink href="/about">
                   <Button size="lg" variant="outline" className="border-2 border-primary/30 hover:border-primary transition-all">
-                    Our Science
+                    {t('ourScience')}
                   </Button>
-                </Link>
+                </LocaleLink>
               </div>
               
               {/* Stats */}
               <div className="flex gap-8 pt-4">
                 <div className="text-center">
                   <p className="text-3xl font-bold text-primary">99%+</p>
-                  <p className="text-sm text-gray-500">Purity Guaranteed</p>
+                  <p className="text-sm text-gray-500">{t('purityGuaranteed')}</p>
                 </div>
                 <div className="text-center">
                   <p className="text-3xl font-bold text-primary">50K+</p>
-                  <p className="text-sm text-gray-500">Researchers Served</p>
+                  <p className="text-sm text-gray-500">{t('researchersServed')}</p>
                 </div>
                 <div className="text-center">
                   <p className="text-3xl font-bold text-primary">120+</p>
-                  <p className="text-sm text-gray-500">Countries</p>
+                  <p className="text-sm text-gray-500">{t('countries')}</p>
                 </div>
               </div>
             </div>
@@ -171,8 +174,8 @@ export default function Home() {
       <section className="py-24 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-dark mb-4">Real Results</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Trusted by researchers worldwide for consistent, verifiable results</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-dark mb-4">{t('realResults')}</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">{t('realResultsSub')}</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -188,8 +191,8 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-white font-bold text-xl">Research Backing</h3>
-                  <p className="text-white/80 text-sm">Scientifically formulated</p>
+                  <h3 className="text-white font-bold text-xl">{t('researchBacking')}</h3>
+                  <p className="text-white/80 text-sm">{t('scientificallyFormulated')}</p>
                 </div>
               </div>
             </div>

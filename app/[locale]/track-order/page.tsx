@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import Button from '@/components/ui/Button';
 
 export default function TrackOrderPage() {
+    const t = useTranslations('trackOrder');
     const [email, setEmail] = useState('');
     const [orderNumber, setOrderNumber] = useState('');
     const [order, setOrder] = useState<any>(null);
@@ -23,7 +25,7 @@ export default function TrackOrderPage() {
             if (res.ok) {
                 setOrder(data.order);
             } else {
-                setError(data.message || 'Order not found. Please check your details.');
+                setError(data.message || t('notFound'));
             }
         } catch (err) {
             setError('An error occurred. Please try again later.');
@@ -35,27 +37,27 @@ export default function TrackOrderPage() {
     return (
         <div className="container mx-auto px-4 py-12 md:py-20">
             <div className="max-w-2xl mx-auto text-center mb-12">
-                <h1 className="text-4xl md:text-5xl font-heading font-bold text-dark mb-4">Track Your Order</h1>
-                <p className="text-gray-600 text-lg">Enter your details below to check the current status of your shipment.</p>
+                <h1 className="text-4xl md:text-5xl font-heading font-bold text-dark mb-4">{t('title')}</h1>
+                <p className="text-gray-600 text-lg">{t('subtitle')}</p>
             </div>
 
             <div className="max-w-xl mx-auto">
                 <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 mb-12">
                     <form onSubmit={handleTrack} className="space-y-6">
                         <div>
-                            <label htmlFor="email" className="block text-sm font-bold text-gray-700 mb-2">Email Address</label>
+                            <label htmlFor="email" className="block text-sm font-bold text-gray-700 mb-2">{t('emailAddress')}</label>
                             <input
                                 id="email"
                                 type="email"
                                 required
                                 className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
-                                placeholder="The email used for the order"
+                                placeholder={t('emailAddress')}
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div>
-                            <label htmlFor="orderNumber" className="block text-sm font-bold text-gray-700 mb-2">Order Number</label>
+                            <label htmlFor="orderNumber" className="block text-sm font-bold text-gray-700 mb-2">{t('orderNumber')}</label>
                             <input
                                 id="orderNumber"
                                 type="text"
@@ -72,7 +74,7 @@ export default function TrackOrderPage() {
                             className="w-full h-12 text-lg font-bold"
                             isLoading={loading}
                         >
-                            Track Now
+                            {t('trackNow')}
                         </Button>
                     </form>
 
@@ -87,7 +89,7 @@ export default function TrackOrderPage() {
                     <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100 animate-slide-up">
                         <div className="flex items-left md:items-center flex-col md:flex-row justify-between mb-8 border-b border-gray-100 pb-4">
                             <div>
-                                <h2 className="text-xl font-bold text-dark">Order Status</h2>
+                                <h2 className="text-xl font-bold text-dark">{t('orderStatus')}</h2>
                                 <p className="text-gray-500 text-sm">Order #{order.orderNumber}</p>
                             </div>
                             <span className={`px-4 py-1 rounded-full text-center mt-2 md:mt-0 text-sm font-bold ${order.status === 'Delivered' ? 'bg-green-100 text-green-700' :
@@ -106,7 +108,7 @@ export default function TrackOrderPage() {
                                     </svg>
                                 </div>
                                 <div>
-                                    <p className="text-sm font-bold text-dark">Latest Update</p>
+                                    <p className="text-sm font-bold text-dark">{t('latestUpdate')}</p>
                                     <p className="text-gray-600 text-sm">{order.notes || 'Your order is being processed and will be shipped soon.'}</p>
                                     <p className="text-xs text-gray-400 mt-1">{new Date(order.updatedAt).toLocaleString()}</p>
                                 </div>
@@ -120,14 +122,14 @@ export default function TrackOrderPage() {
                                         </svg>
                                     </div>
                                     <div>
-                                        <p className="text-sm font-bold text-dark">Tracking Number</p>
+                                        <p className="text-sm font-bold text-dark">{t('trackingNumber')}</p>
                                         <p className="text-primary font-mono font-bold tracking-wider">{order.trackingNumber}</p>
                                     </div>
                                 </div>
                             )}
 
                             <div className="pt-6 border-t border-gray-100">
-                                <h3 className="font-bold text-dark mb-4">Order Summary</h3>
+                                <h3 className="font-bold text-dark mb-4">{t('orderSummary')}</h3>
                                 <div className="space-y-3">
                                     {order.items.map((item: any, idx: number) => (
                                         <div key={idx} className="flex justify-between text-sm">

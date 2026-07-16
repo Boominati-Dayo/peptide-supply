@@ -1,22 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import ToasterProvider from "@/components/providers/ToasterProvider";
-import CookieConsent from "@/components/CookieConsent";
-import WhatsAppButton from "@/components/WhatsAppButton";
-
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://peptidemint.com"),
-
   title: "PeptideMint — Premium Peptides for Sale",
   description:
     "Shop high-quality peptides for sale at PeptideMint. Trusted formulations, secure ordering, and fast delivery for performance, recovery, and wellness.",
-
   keywords:
     "peptides for sale, buy peptides, premium peptides, peptide shop, peptide supplements",
-
   openGraph: {
     title: "PeptideMint — Premium Peptides for Sale",
     description:
@@ -33,7 +24,6 @@ export const metadata: Metadata = {
     ],
     type: "website",
   },
-
   twitter: {
     card: "summary_large_image",
     title: "PeptideMint — Premium Peptides for Sale",
@@ -42,7 +32,6 @@ export const metadata: Metadata = {
     images: ["/thumbnail.png"],
   },
 };
-
 
 export default function RootLayout({
   children,
@@ -55,7 +44,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
-        {/* Smartsupp Live Chat */}
         <script dangerouslySetInnerHTML={{ __html: `
           var _smartsupp = _smartsupp || {};
           _smartsupp.key = 'f7cb5478070240cb5991f6c41138ddac92f6a9e9';
@@ -68,14 +56,7 @@ export default function RootLayout({
         ` }} />
       </head>
       <body suppressHydrationWarning={true} className="flex flex-col min-h-screen">
-        <ToasterProvider />
-        <CookieConsent />
-        <WhatsAppButton />
-        <Navbar />
-        <main className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

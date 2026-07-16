@@ -1,10 +1,15 @@
-import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 import Button from '@/components/ui/Button';
 import Image from 'next/image';
 import Seo from '@/components/Seo';
 import LogoLoop from '@/components/LogoLoop';
 
-export default function AboutPage() {
+export default async function AboutPage() {
+    const t = await getTranslations('about');
+    const c = await getTranslations('common');
+    const n = await getTranslations('nav');
+
     const medicalLogos = [
         { src: '/images/partner-logos/WebMD_logo-150x35.png', alt: 'WebMD', href: '#' },
         { src: '/images/partner-logos/bachem_logo_blue-1-150x31.png', alt: 'Bachem', href: '#' },
@@ -22,8 +27,8 @@ export default function AboutPage() {
     return (
         <div className="bg-white overflow-hidden">
             <Seo 
-                title="About PeptideMint – Premium Research-Grade Peptides"
-                description="Learn about PeptideMint's mission to provide high-purity, lab-tested peptides for research professionals worldwide. GMP-compliant manufacturing with full transparency."
+                title={t('pageTitle')}
+                description={t('pageDescription')}
                 keywords="about peptides, peptide company, research peptides supplier, peptide lab, GMP peptides, peptide manufacturer, biotech company"
             />
             
@@ -44,13 +49,13 @@ export default function AboutPage() {
                         <div className="space-y-6">
                             
                             <h1 className="text-5xl md:text-6xl text-dark font-bold leading-tight">
-                                About <span className="text-primary">PeptideMint</span>
+                                {t.rich('heroTitle', { highlight: (chunks) => <span className="text-primary">{chunks}</span> })}
                             </h1>
                             <p className="text-xl text-gray-600 max-w-xl leading-relaxed">
-                                Science-Driven. Results-Focused. Global Excellence.
+                                {t('heroSubtitle')}
                             </p>
                             <p className="text-gray-500 leading-relaxed">
-                                We are committed to providing the scientific community with the highest-quality research peptides for cutting-edge biomedical studies.
+                                {t('heroDesc')}
                             </p>
                         </div>
                         
@@ -93,13 +98,11 @@ export default function AboutPage() {
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-3xl mx-auto text-center">
                         <h2 className="text-4xl font-heading font-bold text-dark mb-8 relative inline-block">
-                            <span className="relative z-10">Our Mission</span>
+                            <span className="relative z-10">{t('ourMission')}</span>
                             <span className="absolute bottom-0 left-0 w-full h-3 bg-secondary/30 -z-10 transform -skew-x-12"></span>
                         </h2>
                         <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                            At PeptideMint, we are committed to providing the scientific community with the highest-quality research peptides for cutting-edge biomedical studies. 
-                            As a leading peptide manufacturing company, we specialize in producing a wide range of synthetic peptides, including biologically active peptides, 
-                            peptide hormones, and custom peptide synthesis solutions. Our dedication to quality, purity, and innovation has made us the best peptide company for researchers worldwide.
+                            {t('missionText')}
                         </p>
                     </div>
                 </div>
@@ -112,10 +115,10 @@ export default function AboutPage() {
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl font-heading font-bold text-dark mb-4 relative inline-block">
-                            Why <span className="text-primary">PeptideMint</span>?
+                            {t.rich('whyPeptideMint', { highlight: (chunks) => <span className="text-primary">{chunks}</span> })}
                         </h2>
                         <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-                            Peptides are taking the world by storm – redefining what's possible in longevity, performance, and vitality science.
+                            {t('whySubtitle')}
                         </p>
                     </div>
 
@@ -150,9 +153,9 @@ export default function AboutPage() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                     </svg>
                                 </div>
-                                <h3 className="text-xl font-bold text-dark mb-2">Research-Grade Quality</h3>
+                                <h3 className="text-xl font-bold text-dark mb-2">{t('researchGrade')}</h3>
                                 <p className="text-gray-600">
-                                    We supply only the highest purity peptides, synthesized in GMP-compliant facilities and rigorously tested for identity and purity.
+                                    {t('researchGradeDesc')}
                                 </p>
                             </div>
                             
@@ -163,9 +166,9 @@ export default function AboutPage() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                     </svg>
                                 </div>
-                                <h3 className="text-xl font-bold text-dark mb-2">Transparency First</h3>
+                                <h3 className="text-xl font-bold text-dark mb-2">{t('transparencyFirst')}</h3>
                                 <p className="text-gray-600">
-                                    Every batch comes with a Certificate of Analysis (CoA) so you know exactly what you're researching with. No fillers, no secrets.
+                                    {t('transparencyDesc')}
                                 </p>
                             </div>
                             
@@ -175,9 +178,9 @@ export default function AboutPage() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                     </svg>
                                 </div>
-                                <h3 className="text-xl font-bold text-dark mb-2">Secure & Specialized</h3>
+                                <h3 className="text-xl font-bold text-dark mb-2">{t('secureSpecialized')}</h3>
                                 <p className="text-gray-600">
-                                    We understand the unique needs of researchers. Our packaging is distinct, professional, and designed to preserve peptide integrity.
+                                    {t('secureSpecializedDesc')}
                                 </p>
                             </div>
                         </div>
@@ -195,10 +198,9 @@ export default function AboutPage() {
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl mx-auto">
                         <div className="text-center mb-16">
-                            <h2 className="text-4xl font-heading font-bold text-dark mb-4">Why Peptides?</h2>
+                            <h2 className="text-4xl font-heading font-bold text-dark mb-4">{t('whyPeptides')}</h2>
                             <p className="text-gray-600 text-lg">
-                                Peptides play a critical role in biomedical and life sciences research, contributing to advancements in metabolism, 
-                                cellular repair, immune function, and molecular signaling.
+                                {t('whyPeptidesDesc')}
                             </p>
                         </div>
                         
@@ -213,8 +215,8 @@ export default function AboutPage() {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                                         </svg>
                                     </div>
-                                    <h3 className="font-bold text-dark mb-2">Metabolism</h3>
-                                    <p className="text-gray-600 text-sm">Essential for studying metabolic processes and hormonal regulation</p>
+                                    <h3 className="font-bold text-dark mb-2">{t('metabolism')}</h3>
+                                    <p className="text-gray-600 text-sm">{t('metabolismDesc')}</p>
                                 </div>
                             </div>
                             
@@ -226,8 +228,8 @@ export default function AboutPage() {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                         </svg>
                                     </div>
-                                    <h3 className="font-bold text-dark mb-2">Cellular Repair</h3>
-                                    <p className="text-gray-600 text-sm">Key players in tissue repair and wound healing research</p>
+                                    <h3 className="font-bold text-dark mb-2">{t('cellularRepair')}</h3>
+                                    <p className="text-gray-600 text-sm">{t('cellularRepairDesc')}</p>
                                 </div>
                             </div>
                             
@@ -239,8 +241,8 @@ export default function AboutPage() {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                         </svg>
                                     </div>
-                                    <h3 className="font-bold text-dark mb-2">Immune Function</h3>
-                                    <p className="text-gray-600 text-sm">Critical for understanding immune response mechanisms</p>
+                                    <h3 className="font-bold text-dark mb-2">{t('immuneFunction')}</h3>
+                                    <p className="text-gray-600 text-sm">{t('immuneFunctionDesc')}</p>
                                 </div>
                             </div>
                             
@@ -252,8 +254,8 @@ export default function AboutPage() {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                                         </svg>
                                     </div>
-                                    <h3 className="font-bold text-dark mb-2">Molecular Signaling</h3>
-                                    <p className="text-gray-600 text-sm">Vital for studying cellular communication pathways</p>
+                                    <h3 className="font-bold text-dark mb-2">{t('molecularSignaling')}</h3>
+                                    <p className="text-gray-600 text-sm">{t('molecularSignalingDesc')}</p>
                                 </div>
                             </div>
                         </div>
@@ -272,13 +274,11 @@ export default function AboutPage() {
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl mx-auto text-center">
                         <h2 className="text-4xl font-heading font-bold mb-8 relative inline-block">
-                            <span className="relative z-10">Our Quality Commitment</span>
+                            <span className="relative z-10">{t('qualityCommitment')}</span>
                             <span className="absolute bottom-0 left-0 w-full h-2 bg-white/20 -skew-x-12"></span>
                         </h2>
                         <p className="text-pink-100 mb-12 text-lg leading-relaxed">
-                            With decades of expertise in peptide manufacturing, PeptideMint provides researchers with consistent, high-purity peptides 
-                            that drive groundbreaking discoveries. We prioritize quality and innovation, ensuring that every peptide meets the 
-                            stringent demands of scientific research.
+                            {t('qualityDesc')}
                         </p>
                         
                         {/* Three column skewed cards */}
@@ -289,8 +289,8 @@ export default function AboutPage() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                                     </svg>
                                 </div>
-                                <h3 className="font-bold text-lg mb-2">Rigorous Testing</h3>
-                                <p className="text-pink-100 text-sm">Every batch undergoes HPLC and Mass Spectrometry testing</p>
+                                <h3 className="font-bold text-lg mb-2">{t('rigorousTesting')}</h3>
+                                <p className="text-pink-100 text-sm">{t('rigorousTestingDesc')}</p>
                             </div>
                             
                             <div className="group bg-white/10 p-8 rounded-xl hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2 md:-mt-8">
@@ -299,8 +299,8 @@ export default function AboutPage() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </div>
-                                <h3 className="font-bold text-lg mb-2">99%+ Purity</h3>
-                                <p className="text-pink-100 text-sm">Certificate of Analysis (COA) included with every order</p>
+                                <h3 className="font-bold text-lg mb-2">{t('purityGuaranteed')}</h3>
+                                <p className="text-pink-100 text-sm">{t('purityGuaranteedDesc')}</p>
                             </div>
                             
                             <div className="group bg-white/10 p-8 rounded-xl hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2">
@@ -309,8 +309,8 @@ export default function AboutPage() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                                     </svg>
                                 </div>
-                                <h3 className="font-bold text-lg mb-2">Same Day Shipping</h3>
-                                <p className="text-pink-100 text-sm">Fast shipping from the USA with tracking</p>
+                                <h3 className="font-bold text-lg mb-2">{t('sameDayShipping')}</h3>
+                                <p className="text-pink-100 text-sm">{t('sameDayShippingDesc')}</p>
                             </div>
                         </div>
                     </div>
@@ -323,7 +323,7 @@ export default function AboutPage() {
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="text-center">
                         <h3 className="text-2xl font-heading font-bold text-dark mb-8 relative inline-block">
-                            Medical & Research Partners
+                            {t('medicalPartners')}
                             <span className="absolute -bottom-2 left-0 w-full h-1 bg-primary/30 transform -skew-x-12"></span>
                         </h3>
                         <div className="mt-6">
@@ -351,20 +351,19 @@ export default function AboutPage() {
                 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-2xl mx-auto">
-                        <h2 className="text-4xl font-heading font-bold text-dark mb-6">Ready to Advance Your Research?</h2>
+                        <h2 className="text-4xl font-heading font-bold text-dark mb-6">{t('ctaTitle')}</h2>
                         <p className="text-lg text-gray-600 mb-10 max-w-xl mx-auto leading-relaxed">
-                            When you need research peptides for sale, trust PeptideMint for unparalleled precision and reliability. 
-                            Our peptides undergo rigorous quality control and testing to ensure the highest purity standards.
+                            {t('ctaDesc')}
                         </p>
                         <div className="flex justify-center gap-6 flex-wrap">
                             <Link href="/shop">
                                 <Button size="lg" className="shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                                    Browse Products
+                                    {t('browseProducts')}
                                 </Button>
                             </Link>
                             <Link href="/contact">
                                 <Button size="lg" variant="outline" className="border-2 border-primary/30 hover:border-primary transition-all">
-                                    Contact Us
+                                    {t('contactUs')}
                                 </Button>
                             </Link>
                         </div>

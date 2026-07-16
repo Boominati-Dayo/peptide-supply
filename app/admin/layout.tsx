@@ -1,6 +1,8 @@
 import AdminHeader from '@/components/admin/AdminHeader';
 import Sidebar from '@/components/admin/Sidebar';
 
+export const dynamic = 'force-dynamic';
+
 export default function AdminLayout({
     children,
 }: {

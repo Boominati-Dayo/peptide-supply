@@ -24,10 +24,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         
         return {
             title: `${product.name} | PeptideMint`,
-            description: product.description?.slice(0, 160) || 'Shop high-quality peptides at PeptideMint',
+            description: product.description?.slice(0, 160) || 'Premium research-grade peptides at PeptideMint',
             openGraph: {
                 title: `${product.name} | PeptideMint`,
-                description: product.description?.slice(0, 160) || 'Shop high-quality peptides at PeptideMint',
+                description: product.description?.slice(0, 160) || 'Premium research-grade peptides at PeptideMint',
                 images: [
                     {
                         url: productImage,
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             twitter: {
                 card: 'summary_large_image',
                 title: `${product.name} | PeptideMint`,
-                description: product.description?.slice(0, 160) || 'Shop high-quality peptides at PeptideMint',
+                description: product.description?.slice(0, 160) || 'Premium research-grade peptides at PeptideMint',
                 images: [productImage],
             },
         };

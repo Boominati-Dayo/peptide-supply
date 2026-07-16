@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 
 export default function CookieConsent() {
+    const t = useTranslations('cookie');
     const [showConsent, setShowConsent] = useState(false);
     const [mounted, setMounted] = useState(false);
 
@@ -32,9 +34,7 @@ export default function CookieConsent() {
             <div className="bg-white/95 backdrop-blur-sm shadow-xl rounded-t-xl md:rounded-xl mx-auto max-w-md md:max-w-3xl">
                 <div className="p-4 md:p-6">
                     <p className="text-sm text-gray-600 mb-3 text-center md:text-left leading-relaxed">
-                        We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. 
-                        By clicking "Accept", you consent to our use of cookies. You can manage your preferences or decline 
-                        non-essential cookies at any time. For more information, please read our Privacy Policy.
+                        {t('message')}
                     </p>
                     <div className="flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
                         <div className="flex gap-2 justify-center md:justify-start">
@@ -42,20 +42,20 @@ export default function CookieConsent() {
                                 onClick={handleAccept}
                                 className="px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors text-sm"
                             >
-                                Accept
+                                {t('accept')}
                             </button>
                             <button
                                 onClick={handleDecline}
                                 className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg font-medium hover:bg-gray-200 transition-colors text-sm"
                             >
-                                Decline
+                                {t('decline')}
                             </button>
                         </div>
                         <Link 
                             href="/privacy-policy" 
                             className="text-xs text-primary hover:underline text-center md:text-right"
                         >
-                            Privacy Policy
+                            {t('privacyPolicy')}
                         </Link>
                     </div>
                 </div>

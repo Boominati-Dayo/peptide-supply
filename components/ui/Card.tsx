@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import Button from '@/components/ui/Button';
 
 interface ProductCardProps {
@@ -20,10 +21,10 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ id, name, price, image, category, inStock, purity, sku, content, size, form }: ProductCardProps) {
+    const t = useTranslations('common');
 
     return (
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden group transition-all hover:shadow-xl hover:-translate-y-1 flex flex-col h-full">
-            {/* Image Container */}
             <div className="relative aspect-square overflow-hidden bg-gray-50">
                 <Image
                     src={image || '/images/placeholder-product.jpg'}
@@ -33,7 +34,7 @@ export default function ProductCard({ id, name, price, image, category, inStock,
                 />
                 {!inStock && (
                     <div className="absolute inset-0 bg-white/60 flex items-center justify-center backdrop-blur-[2px]">
-                        <span className="bg-error text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">OUT OF STOCK</span>
+                        <span className="bg-error text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">{t('outOfStock')}</span>
                     </div>
                 )}
                 {category && (
@@ -45,7 +46,6 @@ export default function ProductCard({ id, name, price, image, category, inStock,
                 )}
             </div>
 
-            {/* Content */}
             <div className="p-6 flex flex-col flex-1">
                 <div className="mb-4">
                     <h3 className="text-lg font-heading font-bold text-dark line-clamp-2 leading-tight group-hover:text-primary transition-colors">
@@ -69,7 +69,7 @@ export default function ProductCard({ id, name, price, image, category, inStock,
                         )}
                     </div>
                     {sku && (
-                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mt-1">SKU: {sku}</p>
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mt-1">{t('sku')}: {sku}</p>
                     )}
                 </div>
 
@@ -81,7 +81,7 @@ export default function ProductCard({ id, name, price, image, category, inStock,
                                 size="sm"
                                 className="bg-secondary hover:bg-secondary-600 text-dark font-bold px-4 transition-all active:scale-95"
                             >
-                                Details
+                                {t('details')}
                             </Button>
                         </Link>
                     ) : (
@@ -90,7 +90,7 @@ export default function ProductCard({ id, name, price, image, category, inStock,
                             className="bg-gray-200 cursor-not-allowed text-gray-500 font-bold px-4"
                             disabled
                         >
-                            Sold Out
+                            {t('soldOut')}
                         </Button>
                     )}
                 </div>

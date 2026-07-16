@@ -2,12 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import { useCartStore } from '@/lib/store/cart';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import Image from 'next/image';
 
 export default function CheckoutPage() {
+    const t = useTranslations('checkout');
     const router = useRouter();
     const { items, getCartTotal, clearCart } = useCartStore();
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,15 +43,14 @@ export default function CheckoutPage() {
         city: '',
         state: '',
         zipCode: '',
-        country: 'Canada', // Default
+        country: 'Canada',
         paymentMethod: ''
     });
 
     const subtotal = getCartTotal();
-    const shippingCost = 0.00; // No shipping cost
+    const shippingCost = 0.00;
     const total = subtotal;
 
-    // Redirect if cart is empty
     useEffect(() => {
         if (items.length === 0) {
             router.push('/cart');
@@ -106,10 +108,7 @@ export default function CheckoutPage() {
                 throw new Error(data.message || 'Failed to place order');
             }
 
-            // Success - clear cart and redirect to order confirmation
             clearCart();
-            
-            // Use window.location for a clean redirect to ensure page reloads properly
             window.location.href = `/order-complete?order=${data.orderNumber}`;
         } catch (error: any) {
             console.error('Order failed:', error);
@@ -121,7 +120,7 @@ export default function CheckoutPage() {
 
     return (
         <div className="container mx-auto px-4 py-12">
-            <h1 className="text-3xl font-heading font-bold mb-8">Checkout</h1>
+            <h1 className="text-3xl font-heading font-bold mb-8">{t('checkout')}</h1>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 {/* Checkout Form */}
@@ -129,18 +128,18 @@ export default function CheckoutPage() {
                     <form id="checkout-form" onSubmit={handleSubmit} className="space-y-8">
                         {/* Shipping Information */}
                         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                            <h2 className="text-xl font-bold text-dark mb-6">Shipping Information</h2>
+                            <h2 className="text-xl font-bold text-dark mb-6">{t('shippingInformation')}</h2>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                 <Input
-                                    label="First Name"
+                                    label={t('firstName')}
                                     name="firstName"
                                     value={formData.firstName}
                                     onChange={handleChange}
                                     required
                                 />
                                 <Input
-                                    label="Last Name"
+                                    label={t('lastName')}
                                     name="lastName"
                                     value={formData.lastName}
                                     onChange={handleChange}
@@ -150,7 +149,7 @@ export default function CheckoutPage() {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                 <Input
-                                    label="Email Address"
+                                    label={t('emailAddress')}
                                     name="email"
                                     type="email"
                                     value={formData.email}
@@ -158,7 +157,7 @@ export default function CheckoutPage() {
                                     required
                                 />
                                 <Input
-                                    label="Phone Number"
+                                    label={t('phoneNumber')}
                                     name="phone"
                                     type="tel"
                                     value={formData.phone}
@@ -169,7 +168,7 @@ export default function CheckoutPage() {
 
                             <div className="mb-6">
                                 <Input
-                                    label="Street Address"
+                                    label={t('streetAddress')}
                                     name="address"
                                     value={formData.address}
                                     onChange={handleChange}
@@ -179,21 +178,21 @@ export default function CheckoutPage() {
 
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                 <Input
-                                    label="City"
+                                    label={t('city')}
                                     name="city"
                                     value={formData.city}
                                     onChange={handleChange}
                                     required
                                 />
                                 <Input
-                                    label="State / Province"
+                                    label={t('stateProvince')}
                                     name="state"
                                     value={formData.state}
                                     onChange={handleChange}
                                     required
                                 />
                                 <Input
-                                    label="ZIP / Postal Code"
+                                    label={t('zipPostalCode')}
                                     name="zipCode"
                                     value={formData.zipCode}
                                     onChange={handleChange}
@@ -202,7 +201,7 @@ export default function CheckoutPage() {
                             </div>
 
                             <div className="mt-6">
-                                <label className="block text-sm font-medium text-dark mb-2">Country</label>
+                                <label className="block text-sm font-medium text-dark mb-2">{t('country')}</label>
                                 <select
                                     name="country"
                                     value={formData.country}
@@ -241,7 +240,7 @@ export default function CheckoutPage() {
 
                         {/* Payment Method */}
                         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                            <h2 className="text-xl font-bold text-dark mb-6">Payment Method</h2>
+                            <h2 className="text-xl font-bold text-dark mb-6">{t('paymentMethod')}</h2>
                             <div className="space-y-4">
                                 {paymentMethods.map((method) => (
                                     <label
@@ -270,7 +269,7 @@ export default function CheckoutPage() {
                                 ))}
                             </div>
                             <p className="mt-4 text-sm text-gray-500">
-                                Payment details will be sent to your email address after the order is placed.
+                                {t('paymentDetailsSent')}
                             </p>
                         </div>
                     </form>
@@ -279,7 +278,7 @@ export default function CheckoutPage() {
                 {/* Order Summary Sidebar */}
                 <div className="lg:col-span-1">
                     <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 sticky top-24">
-                        <h2 className="text-xl font-bold text-dark mb-6">Your Order</h2>
+                        <h2 className="text-xl font-bold text-dark mb-6">{t('yourOrder')}</h2>
 
                         <div className="space-y-4 mb-6 max-h-80 overflow-y-auto pr-2 custom-scrollbar">
                             {items.map((item) => (
@@ -300,17 +299,17 @@ export default function CheckoutPage() {
 
                         <div className="space-y-3 mb-6 pt-4 border-t">
                             <div className="flex justify-between text-gray-600">
-                                <span>Subtotal</span>
+                                <span>{t('subtotal')}</span>
                                 <span>${subtotal.toFixed(2)}</span>
                             </div>
                             <div className="flex justify-between text-gray-600">
-                                <span>Shipping</span>
-                                <span>will be emailed to you</span>
+                                <span>{t('shipping')}</span>
+                                <span>{t('willBeEmailed')}</span>
                             </div>
                         </div>
 
                         <div className="flex justify-between text-xl font-bold text-dark mb-8 pt-4 border-t">
-                            <span>Total</span>
+                            <span>{t('total')}</span>
                             <span>${total.toFixed(2)}</span>
                         </div>
 
@@ -321,11 +320,11 @@ export default function CheckoutPage() {
                             className="w-full"
                             isLoading={isSubmitting}
                         >
-                            Place Order
+                            {t('placeOrder')}
                         </Button>
 
                         <div className="mt-6 text-center text-xs text-gray-500">
-                            By placing your order, you agree to our <a href="/terms" className="underline">Terms & Conditions</a> and <a href="/privacy-policy" className="underline">Privacy Policy</a>.
+                            By placing this order, you agree to our <Link href="/terms" className="underline">Terms & Conditions</Link> and <Link href="/privacy-policy" className="underline">Privacy Policy</Link>.
                         </div>
                     </div>
                 </div>

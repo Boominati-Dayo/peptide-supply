@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import ImageCarousel from '@/components/ui/ImageCarousel';
 import Button from '@/components/ui/Button';
 import Breadcrumb from '@/components/ui/Breadcrumb';
@@ -13,6 +15,8 @@ interface ProductDetailContentProps {
 }
 
 export default function ProductDetailContent({ id }: ProductDetailContentProps) {
+    const t = useTranslations('productDetail');
+    const c = useTranslations('common');
     const [quantity, setQuantity] = useState(1);
     const [loading, setLoading] = useState(true);
     const [product, setProduct] = useState<any>(null);
@@ -68,7 +72,7 @@ export default function ProductDetailContent({ id }: ProductDetailContentProps) 
             <div className="min-h-screen flex items-center justify-center">
                 <div className="text-center">
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-                    <p className="text-gray-600">Loading...</p>
+                    <p className="text-gray-600">{c('loading')}</p>
                 </div>
             </div>
         );
@@ -78,7 +82,7 @@ export default function ProductDetailContent({ id }: ProductDetailContentProps) 
         return (
             <div className="min-h-screen flex items-center justify-center">
                 <div className="text-center">
-                    <p className="text-gray-600">Product not found.</p>
+                    <p className="text-gray-600">{c('noProducts')}</p>
                 </div>
             </div>
         );
@@ -88,9 +92,9 @@ export default function ProductDetailContent({ id }: ProductDetailContentProps) 
         <div className="container mx-auto px-4 py-8">
             <Breadcrumb
                 items={[
-                    { label: 'Home', href: '/' },
-                    { label: 'Shop', href: '/shop' },
-                    { label: product.category || 'Products', href: `/shop?category=${product.category}` },
+                    { label: c('home'), href: '/' },
+                    { label: c('shop'), href: '/shop' },
+                    { label: product.category || c('category'), href: `/shop?category=${product.category}` },
                     { label: product.name }
                 ]}
             />
@@ -119,7 +123,7 @@ export default function ProductDetailContent({ id }: ProductDetailContentProps) 
                         </span>
                         {product.purity && (
                             <span className="text-gray-500">
-                                Purity: <span className="font-medium">{product.purity}</span>
+                                {t('purity')} <span className="font-medium">{product.purity}</span>
                             </span>
                         )}
                     </div>
@@ -131,29 +135,29 @@ export default function ProductDetailContent({ id }: ProductDetailContentProps) 
                     {/* Specifications */}
                     {(product.content || product.size || product.form) && (
                         <div className="bg-gray-50 rounded-xl p-6 mb-8">
-                            <h3 className="font-bold text-dark mb-4">Specifications</h3>
+                            <h3 className="font-bold text-dark mb-4">{t('specifications')}</h3>
                             <div className="grid grid-cols-2 gap-4 text-sm">
                                 {product.content && (
                                     <div>
-                                        <span className="text-gray-500">Content:</span>
+                                        <span className="text-gray-500">{t('content')}</span>
                                         <span className="ml-2 font-medium">{product.content}</span>
                                     </div>
                                 )}
                                 {product.size && (
                                     <div>
-                                        <span className="text-gray-500">Size:</span>
+                                        <span className="text-gray-500">{t('size')}</span>
                                         <span className="ml-2 font-medium">{product.size}</span>
                                     </div>
                                 )}
                                 {product.form && (
                                     <div>
-                                        <span className="text-gray-500">Form:</span>
+                                        <span className="text-gray-500">{t('form')}</span>
                                         <span className="ml-2 font-medium">{product.form}</span>
                                     </div>
                                 )}
                                 {product.sku && (
                                     <div>
-                                        <span className="text-gray-500">SKU:</span>
+                                        <span className="text-gray-500">{t('sku')}</span>
                                         <span className="ml-2 font-medium">{product.sku}</span>
                                     </div>
                                 )}
@@ -188,7 +192,7 @@ export default function ProductDetailContent({ id }: ProductDetailContentProps) 
                             onClick={handleAddToCart}
                             disabled={!product.stock || product.soldout_status}
                         >
-                            {product.stock && !product.soldout_status ? 'Add to Cart' : 'Sold Out'}
+                            {product.stock && !product.soldout_status ? t('addToCart') : t('soldOut')}
                         </Button>
                     </div>
                 </div>
@@ -197,7 +201,7 @@ export default function ProductDetailContent({ id }: ProductDetailContentProps) 
             {/* Related Products - Horizontal Scroll */}
             {relatedProducts.length > 0 && (
                 <div className="mt-16">
-                    <h2 className="text-3xl font-heading font-bold text-dark mb-8">Related Products</h2>
+                    <h2 className="text-3xl font-heading font-bold text-dark mb-8">{t('relatedProducts')}</h2>
                     <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory -mx-4 px-4">
                         {relatedProducts.map((relatedProduct: any) => (
                             <div key={relatedProduct._id} className="flex-shrink-0 w-72 snap-start">

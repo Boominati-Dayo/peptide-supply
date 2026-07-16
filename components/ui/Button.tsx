@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslations } from 'next-intl';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: 'primary' | 'secondary' | 'accent' | 'outline';
@@ -16,6 +17,7 @@ export default function Button({
     disabled,
     ...props
 }: ButtonProps) {
+    const t = useTranslations('common');
     const baseStyles = 'font-medium rounded-lg transition-all duration-300 ease-in-out active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center';
 
     const variantStyles = {
@@ -59,7 +61,7 @@ export default function Button({
                             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                         />
                     </svg>
-                    Loading...
+                    {t('loading')}
                 </>
             ) : (
                 children

@@ -2,10 +2,12 @@
 
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import Button from '@/components/ui/Button';
 import { Suspense, useState, useEffect } from 'react';
 
 function OrderCompleteContent() {
+    const t = useTranslations('orderComplete');
     const searchParams = useSearchParams();
     const orderNumber = searchParams.get('order');
     const [orderData, setOrderData] = useState<any>(null);
@@ -41,8 +43,8 @@ function OrderCompleteContent() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                 </div>
-                <h1 className="text-3xl font-heading font-bold text-dark mb-2">Order Placed Successfully!</h1>
-                <p className="text-gray-600">Thank you for your purchase.</p>
+                <h1 className="text-3xl font-heading font-bold text-dark mb-2">{t('successTitle')}</h1>
+                <p className="text-gray-600">{t('thankYou')}</p>
             </div>
 
             <div className="max-w-4xl mx-auto">
@@ -52,7 +54,7 @@ function OrderCompleteContent() {
                     <div className="bg-primary text-white p-6">
                         <div className="flex justify-between items-start">
                             <div>
-                                <h2 className="text-2xl font-bold">INVOICE</h2>
+                                <h2 className="text-2xl font-bold">{t('invoice')}</h2>
                                 <p className="text-blue-200 mt-1">PeptideMint</p>
                             </div>
                             <div className="text-right">
@@ -71,7 +73,7 @@ function OrderCompleteContent() {
                                 {/* Customer Info */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                                     <div>
-                                        <h3 className="font-bold text-dark mb-3">Bill To:</h3>
+                                        <h3 className="font-bold text-dark mb-3">{t('billTo')}</h3>
                                         <div className="text-gray-600 text-sm space-y-1">
                                             <p className="font-medium text-dark">{orderData.shippingInfo?.firstName} {orderData.shippingInfo?.lastName}</p>
                                             <p>{orderData.shippingInfo?.email}</p>
@@ -82,19 +84,19 @@ function OrderCompleteContent() {
                                         </div>
                                     </div>
                                     <div>
-                                        <h3 className="font-bold text-dark mb-3">Order Info:</h3>
+                                        <h3 className="font-bold text-dark mb-3">{t('orderInfo')}</h3>
                                         <div className="text-gray-600 text-sm space-y-1">
-                                            <p><span className="font-medium text-dark">Order Number:</span> #{orderData.orderNumber}</p>
-                                            <p><span className="font-medium text-dark">Date:</span> {new Date(orderData.createdAt).toLocaleDateString()}</p>
-                                            <p><span className="font-medium text-dark">Status:</span> <span className="text-yellow-600">{orderData.status || 'Pending Payment'}</span></p>
-                                            <p><span className="font-medium text-dark">Payment Method:</span> {orderData.paymentMethod}</p>
+                                            <p><span className="font-medium text-dark">{t('orderNumber')}</span> #{orderData.orderNumber}</p>
+                                            <p><span className="font-medium text-dark">{t('date')}</span> {new Date(orderData.createdAt).toLocaleDateString()}</p>
+                                            <p><span className="font-medium text-dark">{t('status')}</span> <span className="text-yellow-600">{orderData.status || 'Pending Payment'}</span></p>
+                                            <p><span className="font-medium text-dark">{t('paymentMethod')}</span> {orderData.paymentMethod}</p>
                                         </div>
                                     </div>
                                 </div>
 
                                 {/* Items Table */}
                                 <div className="mb-8">
-                                    <h3 className="font-bold text-dark mb-4">Order Items</h3>
+                                    <h3 className="font-bold text-dark mb-4">{t('orderItems')}</h3>
                                     <table className="w-full">
                                         <thead>
                                             <tr className="border-b border-gray-200">
@@ -146,20 +148,20 @@ function OrderCompleteContent() {
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        What happens next?
+                        {t('whatHappensNext')}
                     </h3>
                     <ol className="list-decimal list-inside space-y-2 text-blue-800 text-sm">
-                        <li>Check your email for the order confirmation.</li>
-                        <li>You will receive a <strong>separate email with payment instructions</strong> shortly.</li>
-                        <li>Follow the instructions to complete your payment.</li>
-                        <li>Once payment is confirmed, we will ship your order immediately.</li>
+                        <li>{t('step1')}</li>
+                        <li>{t('step2')}</li>
+                        <li>{t('step3')}</li>
+                        <li>{t('step4')}</li>
                     </ol>
                 </div>
 
                 {/* Actions */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Link href="/shop">
-                        <Button variant="primary">Continue Shopping</Button>
+                        <Button variant="primary">{t('continueShopping')}</Button>
                     </Link>
                 </div>
             </div>
